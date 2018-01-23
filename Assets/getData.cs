@@ -1,5 +1,6 @@
 ﻿// Scripts for getting both current and session metrics and datasets.
 
+using System.IO;
 using UnityEngine;
 
 // LATER: go directly to bike without SDK using mBikeState
@@ -13,7 +14,6 @@ public class getData : MonoBehaviour
     // Initialization
     void Start()
     {
-        createFHIRDoc.Main();
         controller = VZPlayer.Controller;
         current = new double[7];
         session = new double[7];

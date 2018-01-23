@@ -1,31 +1,77 @@
-﻿using System.Xml;
-using UnityEngine;
-//TODO0-4 !!!!!!!!!!!!!!!!!!!!!!!!!
+﻿using System.IO;
+using System.Xml;
+//TODO1-4 !!!!!!!!!!!!!!!!!!!!!!!!!
 
-// ================================================= RUN BEFORE LINKING getData to see document generates correctly
 // VERIFY WITH SOMEONE THAT YOU HAVE ALL REQUIRED ITEMS
 
 //TODO4 Find out how to overwrite old XML entries for continuously updating (current) metrics ==========
 
-class createFHIRDoc
+class genFHIR
 {
 
-    //TODO1 create method to read in from getData and put in a format able to be written by createFHIRDoc. Maybe class instead?
+    //TODO1 create method to read in from getData and put in a format able to be written by genFHIR. Maybe class instead?
 
-
-    public static void Main() // put arguments in if you want them
+    public static void Device() // Put parameters here if you need them. Document manual initial creation of device profile, will be created on document creation if does not exist.
     {
+        XmlWriter xw = XmlWriter.Create("VirZOOM-device-profile.xml");
+
+        xw.WriteStartDocument();
+
+        xw.WriteStartElement("Device", "http://hl7.org/fhir");
+
+        xw.WriteStartElement("identifier");
+        xw.WriteString("FHIRWEAVR-device");
+        xw.WriteEndElement();
+
+        xw.WriteStartElement("status");
+        xw.WriteAttributeString("value", "active"); // read and change to inactive if device disconnected?
+        xw.WriteEndElement();
+
+        xw.WriteStartElement("type");
+        xw.WriteStartElement("text");
+        xw.WriteAttributeString("value", "Networked virtual-reality-enabled stationary exercise bicycle");
+        xw.WriteEndElement();
+        xw.WriteEndElement();
+
+        xw.WriteStartElement("manufacturer");
+        xw.WriteAttributeString("value", "VirZOOM Inc.");
+        xw.WriteEndElement();
+
+        xw.WriteStartElement("model");
+        xw.WriteAttributeString("value", "Beta bicycle"); // If FHIRWEAVR is made to work with future versions, ammend to read and set model accordingly
+        xw.WriteEndElement();
+
+        xw.WriteStartElement("contact");
+        xw.WriteString("VirZOOM: info@virzoom.com - FHIRWEAVR: zcabttu@ucl.ac.uk");
+        xw.WriteEndElement();
+
+        xw.WriteStartElement("safety");
+        xw.WriteString("Consult a medical professional before use. Use only on a level surface in a clear space and ensure that the bicycle is properly assembled. Do not exceed weight limit.");
+        xw.WriteEndElement();
+
+        xw.WriteEndElement();
+
+        xw.WriteEndDocument();
+        xw.Close();
+
+    }
+
+    public static void Document() // put arguments in if you want them
+    {
+
+        if (!(File.Exists(@"VirZOOM-device.xml")))
+        {
+            Device();
+        }
+
         //TODO3 Read in some timestamp info and change file name based on it ==========
-        XmlWriter xw = XmlWriter.Create("results.xml");
+        XmlWriter xw = XmlWriter.Create("VirZOOM-output.xml");
         int i;
         string[] identifiers = { "distance", "speed", "resistance", "heartrate", "rotation", "lean", "incline" };
-        
-        //TODO0 create document start information (before List start)
 
         xw.WriteStartDocument();
 
         xw.WriteStartElement("Bundle", "http://hl7.org/fhir");
-        //xw.WriteAttributeString("xmlns", "http://hl7.org/fhir");
 
         xw.WriteStartElement("meta");
         xw.WriteStartElement("lastUpdated");
@@ -34,12 +80,12 @@ class createFHIRDoc
         xw.WriteEndElement();
 
         xw.WriteStartElement("identifier");
-        xw.WriteString("FHIRWEAVR");
+        xw.WriteString("FHIRWEAVR-output");
         xw.WriteEndElement();
 
         xw.WriteStartElement("type");
         xw.WriteAttributeString("value", "document");
-        xw.WriteEndElement(); // Can we make this a single-line end tag? i.e. />
+        xw.WriteEndElement(); // Can we make this a single-line end tag? i.e. /> THIS NEEDS TO BE APPLIED TO ALL
 
         xw.WriteStartElement("entry");
         xw.WriteStartElement("resource");
@@ -84,7 +130,6 @@ class createFHIRDoc
 
         // FHIR List definitions
         xw.WriteStartElement("List");
-        //xw.WriteAttributeString("xmlns", "http://hl7.org/fhir"); Don't think we need this if it's defined for the bundle
 
         xw.WriteStartElement("status");
         xw.WriteAttributeString("value", "current"); //TODO3 overwrite to 'retired' if new document made ==========
