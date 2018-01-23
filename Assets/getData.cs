@@ -1,6 +1,5 @@
 ﻿// Scripts for getting both current and session metrics and datasets.
 
-using System.IO;
 using UnityEngine;
 
 // LATER: go directly to bike without SDK using mBikeState
@@ -8,8 +7,8 @@ using UnityEngine;
 public class getData : MonoBehaviour
 {
     private VZController controller;
-    private double distance, speed, resistance, heartrate, rotation, lean, incline;
-    private double[] current, session;
+    private static double distance, speed, resistance, heartrate, rotation, lean, incline;
+    private static double[] current, session;
 
     // Initialization
     void Start()
@@ -45,7 +44,7 @@ public class getData : MonoBehaviour
     }
 
     // Get all data, current/session specified by parameter - after Update()
-    public double[] getAllData(string type)
+    public static double[] GetAllData(string type)
     {
         if (type == "current")
         {
@@ -64,7 +63,7 @@ public class getData : MonoBehaviour
 
     // Get a metric, current/session specified by parameter - after Update()
     // Test on resistance and heart rate - they may not be doubles ===============================================
-    public double getMetric(string metric, string type)
+    public static double GetMetric(string metric, string type)
     {
         if (type == "current")
         {

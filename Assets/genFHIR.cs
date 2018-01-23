@@ -1,15 +1,15 @@
-﻿using System.IO;
+﻿// Scripts for generating FHIR Documents and Dveice Profiles
+
+using System.IO;
 using System.Xml;
-//TODO1-4 !!!!!!!!!!!!!!!!!!!!!!!!!
+//TODO1-3 !!!!!!!!!!!!!!!!!!!!!!!!!
 
 // VERIFY WITH SOMEONE THAT YOU HAVE ALL REQUIRED ITEMS
 
-//TODO4 Find out how to overwrite old XML entries for continuously updating (current) metrics ==========
+//TODO3 Find out how to overwrite old XML entries for continuously updating (current) metrics ==========
 
 class genFHIR
 {
-
-    //TODO1 create method to read in from getData and put in a format able to be written by genFHIR. Maybe class instead?
 
     public static void Device() // Put parameters here if you need them. Document manual initial creation of device profile, will be created on document creation if does not exist.
     {
@@ -56,7 +56,7 @@ class genFHIR
 
     }
 
-    public static void Document() // put arguments in if you want them
+    public static void Document(string type) // put arguments in if you want them
     {
 
         if (!(File.Exists(@"VirZOOM-device.xml")))
@@ -64,7 +64,10 @@ class genFHIR
             Device();
         }
 
-        //TODO3 Read in some timestamp info and change file name based on it ==========
+        double[] output = new double[7];
+        output = getData.GetAllData(type); // type handling done in getData.cs
+
+        //TODO2 Read in some timestamp info and change file name based on it ==========
         XmlWriter xw = XmlWriter.Create("VirZOOM-output.xml");
         int i;
         string[] identifiers = { "distance", "speed", "resistance", "heartrate", "rotation", "lean", "incline" };
@@ -75,7 +78,7 @@ class genFHIR
 
         xw.WriteStartElement("meta");
         xw.WriteStartElement("lastUpdated");
-        xw.WriteAttributeString("value", "[DATETIME]"); //TODO3 read in ==========
+        xw.WriteAttributeString("value", "[DATETIME]"); //TODO2 read in ==========
         xw.WriteEndElement();
         xw.WriteEndElement();
 
@@ -92,7 +95,7 @@ class genFHIR
         xw.WriteStartElement("Composition");
 
         xw.WriteStartElement("status");
-        xw.WriteAttributeString("value", "final"); //TODO3 change to 'amended' if changed
+        xw.WriteAttributeString("value", "final"); //TODO2 change to 'amended' if changed
         xw.WriteEndElement();
 
         xw.WriteStartElement("type");
@@ -108,19 +111,19 @@ class genFHIR
         xw.WriteEndElement();
 
         xw.WriteStartElement("status");
-        xw.WriteAttributeString("value", "final"); //TODO3 change to 'amended' if changed
+        xw.WriteAttributeString("value", "final"); //TODO2 change to 'amended' if changed
         xw.WriteEndElement();
 
         xw.WriteStartElement("subject");
-        xw.WriteString("Reference(Device)"); //TODO2 read how to create reference and create a Device record for the VirZOOM ==========
+        xw.WriteString("Reference(Device)"); //TODO1 read how to create reference and create a Device record for the VirZOOM ==========
         xw.WriteEndElement();
 
         xw.WriteStartElement("date");
-        xw.WriteAttributeString("value", "[dateTime]"); //TODO2 read in date + time and give in exact FHIR format ==========
+        xw.WriteAttributeString("value", "[dateTime]"); //TODO1 read in date + time and give in exact FHIR format ==========
         xw.WriteEndElement();
 
         xw.WriteStartElement("author");
-        xw.WriteString("Reference(Device)"); //TODO2 read how to create reference and create a Device record for the VirZOOM ==========
+        xw.WriteString("Reference(Device)"); //TODO1 read how to create reference and create a Device record for the VirZOOM ==========
         xw.WriteEndElement();
 
         xw.WriteStartElement("title");
@@ -132,22 +135,20 @@ class genFHIR
         xw.WriteStartElement("List");
 
         xw.WriteStartElement("status");
-        xw.WriteAttributeString("value", "current"); //TODO3 overwrite to 'retired' if new document made ==========
+        xw.WriteAttributeString("value", "current"); //TODO2 overwrite to 'retired' if new document made ==========
         xw.WriteEndElement();
 
         xw.WriteStartElement("mode");
-        xw.WriteAttributeString("value", "working"); //TODO3 change to 'snapshot' when exporting halfway through session or new document made ==========
+        xw.WriteAttributeString("value", "working"); //TODO2 change to 'snapshot' when exporting halfway through session or new document made ==========
         xw.WriteEndElement();
 
-        ///////////////////////////
-        //TODO1 read in the below//
-        ///////////////////////////
+
         // FHIR List entries
         for (i = 0; i < 7; i++)
         {
             xw.WriteStartElement("entry");
             xw.WriteStartElement("item");
-            xw.WriteAttributeString(identifiers[i], "[VALUE]"); //TODO1 Read in value
+            xw.WriteAttributeString(identifiers[i], output[i].ToString());
             xw.WriteEndElement();
             xw.WriteEndElement();
         }
