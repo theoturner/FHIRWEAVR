@@ -4,7 +4,7 @@ using UnityEngine;
 
 // LATER: go directly to bike without SDK using mBikeState
 
-public class getData : MonoBehaviour
+public class GetData : MonoBehaviour
 {
     private VZController controller;
     private static double distance, speed, resistance, heartrate, rotation, lean, incline;
@@ -50,7 +50,7 @@ public class getData : MonoBehaviour
         {
             return current;
         }
-        if (type == "session")
+        else if (type == "session")
         {
             return session;
         }
@@ -71,27 +71,27 @@ public class getData : MonoBehaviour
             {
                 return distance;
             }
-            if (metric == "speed")
+            else if (metric == "speed")
             {
                 return speed;
             }
-            if (metric == "resistance")
+            else if (metric == "resistance")
             {
                 return resistance;
             }
-            if (metric == "heartrate")
+            else if (metric == "heartrate")
             {
                 return heartrate;
             }
-            if (metric == "rotation")
+            else if (metric == "rotation")
             {
                 return rotation;
             }
-            if (metric == "lean")
+            else if (metric == "lean")
             {
                 return lean;
             }
-            if (metric == "incline")
+            else if (metric == "incline")
             {
                 return incline;
             }
@@ -108,27 +108,27 @@ public class getData : MonoBehaviour
             {
                 return distance;
             }
-            if (metric == "speed")
+            else if (metric == "speed")
             {
                 return session[1] / i;
             }
-            if (metric == "resistance")
+            else if (metric == "resistance")
             {
                 return session[2] / i;
             }
-            if (metric == "heartrate")
+            else if (metric == "heartrate")
             {
                 return session[3] / i;
             }
-            if (metric == "rotation")
+            else if (metric == "rotation")
             {
                 return session[4] / i;
             }
-            if (metric == "lean")
+            else if (metric == "lean")
             {
                 return session[5] / i;
             }
-            if (metric == "incline")
+            else if (metric == "incline")
             {
                 return session[6] / i;
             }

@@ -284,6 +284,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\dateTimeFormats.cs" />
     <Compile Include="Assets\genFHIR.cs" />
     <Compile Include="Assets\getData.cs" />
     <Compile Include="Assets\VZ\Scripts\core\VZColliderInfo.cs" />

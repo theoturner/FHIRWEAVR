@@ -2,13 +2,15 @@
 
 using System.IO;
 using System.Xml;
-//TODO1-3 !!!!!!!!!!!!!!!!!!!!!!!!!
+//TODO1-2 !!!!!!!!!!!!!!!!!!!!!!!!!
 
 // VERIFY WITH SOMEONE THAT YOU HAVE ALL REQUIRED ITEMS
+// TODO3 Check if using static this much is bad - CHANGE TO SIGNLETON
 
-//TODO3 Find out how to overwrite old XML entries for continuously updating (current) metrics ==========
+//TODO1 push with HTML post. MUST PUSH DEVICE PROFILE ALSO!
+//TODO2 Find out how to overwrite old XML entries for continuously updating (current) metrics ==========
 
-class genFHIR
+class GenFHIR
 {
 
     public static void Device() // Put parameters here if you need them. Document manual initial creation of device profile, will be created on document creation if does not exist.
@@ -65,10 +67,13 @@ class genFHIR
         }
 
         double[] output = new double[7];
-        output = getData.GetAllData(type); // type handling done in getData.cs
+        output = GetData.GetAllData(type); // type handling done in getData.cs
 
-        //TODO2 Read in some timestamp info and change file name based on it ==========
-        XmlWriter xw = XmlWriter.Create("VirZOOM-output.xml");
+        // Get date/time immediately after getting data
+        string dateTime = DateTimeFormats.GetDT("full");
+        string fileDateTime = DateTimeFormats.GetDT("filename");
+
+        XmlWriter xw = XmlWriter.Create("VirZOOM-output-" + fileDateTime + ".xml");
         int i;
         string[] identifiers = { "distance", "speed", "resistance", "heartrate", "rotation", "lean", "incline" };
 
@@ -78,7 +83,7 @@ class genFHIR
 
         xw.WriteStartElement("meta");
         xw.WriteStartElement("lastUpdated");
-        xw.WriteAttributeString("value", "[DATETIME]"); //TODO2 read in ==========
+        xw.WriteAttributeString("value", dateTime);
         xw.WriteEndElement();
         xw.WriteEndElement();
 
@@ -115,15 +120,19 @@ class genFHIR
         xw.WriteEndElement();
 
         xw.WriteStartElement("subject");
-        xw.WriteString("Reference(Device)"); //TODO1 read how to create reference and create a Device record for the VirZOOM ==========
+        xw.WriteStartElement("reference");
+        xw.WriteAttributeString("value", "VirZOOM-device.xml"); //change if you change directory structure
+        xw.WriteEndElement();
         xw.WriteEndElement();
 
         xw.WriteStartElement("date");
-        xw.WriteAttributeString("value", "[dateTime]"); //TODO1 read in date + time and give in exact FHIR format ==========
+        xw.WriteAttributeString("value", dateTime);
         xw.WriteEndElement();
 
         xw.WriteStartElement("author");
-        xw.WriteString("Reference(Device)"); //TODO1 read how to create reference and create a Device record for the VirZOOM ==========
+        xw.WriteStartElement("reference");
+        xw.WriteAttributeString("value", "VirZOOM-device.xml"); //change if you change directory structure
+        xw.WriteEndElement();
         xw.WriteEndElement();
 
         xw.WriteStartElement("title");
@@ -139,7 +148,7 @@ class genFHIR
         xw.WriteEndElement();
 
         xw.WriteStartElement("mode");
-        xw.WriteAttributeString("value", "working"); //TODO2 change to 'snapshot' when exporting halfway through session or new document made ==========
+        xw.WriteAttributeString("value", "snapshot");
         xw.WriteEndElement();
 
 
