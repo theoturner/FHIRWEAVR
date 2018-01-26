@@ -1,11 +1,12 @@
 ﻿// Scripts for generating FHIR Documents and Dveice Profiles
 
+//TODO 1-2
+//TODO Verify with a FHIR team member that you have all required elements
+//TODO Is using static this much bad? Try converting to singleton.
+//TODO for documentation: document manual initial creation of device profile, will be created on document creation if does not exist.
+
 using System.IO;
 using System.Xml;
-//TODO1-2 !!!!!!!!!!!!!!!!!!!!!!!!!
-
-// VERIFY WITH SOMEONE THAT YOU HAVE ALL REQUIRED ITEMS
-// TODO3 Check if using static this much is bad - CHANGE TO SIGNLETON
 
 //TODO1 push with HTML post. MUST PUSH DEVICE PROFILE ALSO!
 //TODO2 Find out how to overwrite old XML entries for continuously updating (current) metrics ==========
@@ -13,7 +14,7 @@ using System.Xml;
 class GenFHIR
 {
 
-    public static void Device() // Put parameters here if you need them. Document manual initial creation of device profile, will be created on document creation if does not exist.
+    public static void Device() // Put parameters here if you need them.
     {
         XmlWriter xw = XmlWriter.Create("VirZOOM-device-profile.xml");
 
@@ -23,33 +24,33 @@ class GenFHIR
 
         xw.WriteStartElement("identifier");
         xw.WriteString("FHIRWEAVR-device");
-        xw.WriteEndElement();
+        xw.WriteFullEndElement();
 
         xw.WriteStartElement("status");
-        xw.WriteAttributeString("value", "active"); // read and change to inactive if device disconnected?
-        xw.WriteEndElement();
+        xw.WriteAttributeString("value", "active"); //TODO2 read and change to inactive if device disconnected
+        xw.WriteFullEndElement();
 
         xw.WriteStartElement("type");
         xw.WriteStartElement("text");
         xw.WriteAttributeString("value", "Networked virtual-reality-enabled stationary exercise bicycle");
-        xw.WriteEndElement();
+        xw.WriteFullEndElement();
         xw.WriteEndElement();
 
         xw.WriteStartElement("manufacturer");
         xw.WriteAttributeString("value", "VirZOOM Inc.");
-        xw.WriteEndElement();
+        xw.WriteFullEndElement();
 
         xw.WriteStartElement("model");
-        xw.WriteAttributeString("value", "Beta bicycle"); // If FHIRWEAVR is made to work with future versions, ammend to read and set model accordingly
-        xw.WriteEndElement();
+        xw.WriteAttributeString("value", "Beta bicycle");
+        xw.WriteFullEndElement();
 
         xw.WriteStartElement("contact");
         xw.WriteString("VirZOOM: info@virzoom.com - FHIRWEAVR: zcabttu@ucl.ac.uk");
-        xw.WriteEndElement();
+        xw.WriteFullEndElement();
 
         xw.WriteStartElement("safety");
         xw.WriteString("Consult a medical professional before use. Use only on a level surface in a clear space and ensure that the bicycle is properly assembled. Do not exceed weight limit.");
-        xw.WriteEndElement();
+        xw.WriteFullEndElement();
 
         xw.WriteEndElement();
 
@@ -58,7 +59,7 @@ class GenFHIR
 
     }
 
-    public static void Document(string type) // put arguments in if you want them
+    public static void Document(string type)
     {
 
         if (!(File.Exists(@"VirZOOM-device.xml")))
@@ -84,16 +85,16 @@ class GenFHIR
         xw.WriteStartElement("meta");
         xw.WriteStartElement("lastUpdated");
         xw.WriteAttributeString("value", dateTime);
-        xw.WriteEndElement();
+        xw.WriteFullEndElement();
         xw.WriteEndElement();
 
         xw.WriteStartElement("identifier");
         xw.WriteString("FHIRWEAVR-output");
-        xw.WriteEndElement();
+        xw.WriteFullEndElement();
 
         xw.WriteStartElement("type");
         xw.WriteAttributeString("value", "document");
-        xw.WriteEndElement(); // Can we make this a single-line end tag? i.e. /> THIS NEEDS TO BE APPLIED TO ALL
+        xw.WriteFullEndElement();
 
         xw.WriteStartElement("entry");
         xw.WriteStartElement("resource");
@@ -101,43 +102,43 @@ class GenFHIR
 
         xw.WriteStartElement("status");
         xw.WriteAttributeString("value", "final"); //TODO2 change to 'amended' if changed
-        xw.WriteEndElement();
+        xw.WriteFullEndElement();
 
         xw.WriteStartElement("type");
         xw.WriteStartElement("coding");
         xw.WriteStartElement("system");
         xw.WriteAttributeString("value", "http://loinc.org");
         // Do we need a 'code' sub-element of 'coding'? See FHIR document example.
-        xw.WriteEndElement();
+        xw.WriteFullEndElement();
         xw.WriteEndElement();
         xw.WriteStartElement("text");
         xw.WriteAttributeString("value", "VirZOOM output");
-        xw.WriteEndElement();
+        xw.WriteFullEndElement();
         xw.WriteEndElement();
 
         xw.WriteStartElement("status");
         xw.WriteAttributeString("value", "final"); //TODO2 change to 'amended' if changed
-        xw.WriteEndElement();
+        xw.WriteFullEndElement();
 
         xw.WriteStartElement("subject");
         xw.WriteStartElement("reference");
         xw.WriteAttributeString("value", "VirZOOM-device.xml"); //change if you change directory structure
-        xw.WriteEndElement();
+        xw.WriteFullEndElement();
         xw.WriteEndElement();
 
         xw.WriteStartElement("date");
         xw.WriteAttributeString("value", dateTime);
-        xw.WriteEndElement();
+        xw.WriteFullEndElement();
 
         xw.WriteStartElement("author");
         xw.WriteStartElement("reference");
-        xw.WriteAttributeString("value", "VirZOOM-device.xml"); //change if you change directory structure
-        xw.WriteEndElement();
+        xw.WriteAttributeString("value", "VirZOOM-device-profile.xml"); //change if you change directory structure
+        xw.WriteFullEndElement();
         xw.WriteEndElement();
 
         xw.WriteStartElement("title");
         xw.WriteString("VirZOOM output");
-        xw.WriteEndElement();
+        xw.WriteFullEndElement();
 
 
         // FHIR List definitions
@@ -145,11 +146,11 @@ class GenFHIR
 
         xw.WriteStartElement("status");
         xw.WriteAttributeString("value", "current"); //TODO2 overwrite to 'retired' if new document made ==========
-        xw.WriteEndElement();
+        xw.WriteFullEndElement();
 
         xw.WriteStartElement("mode");
         xw.WriteAttributeString("value", "snapshot");
-        xw.WriteEndElement();
+        xw.WriteFullEndElement();
 
 
         // FHIR List entries
@@ -158,7 +159,7 @@ class GenFHIR
             xw.WriteStartElement("entry");
             xw.WriteStartElement("item");
             xw.WriteAttributeString(identifiers[i], output[i].ToString());
-            xw.WriteEndElement();
+            xw.WriteFullEndElement();
             xw.WriteEndElement();
         }
 

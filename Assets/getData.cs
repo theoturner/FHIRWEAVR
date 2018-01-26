@@ -16,6 +16,7 @@ public class GetData : MonoBehaviour
         controller = VZPlayer.Controller;
         current = new double[7];
         session = new double[7];
+        GenFHIR.Document("session");
     }
 
     // Called once every frame
@@ -32,9 +33,9 @@ public class GetData : MonoBehaviour
         current[3] = heartrate;
         rotation = controller.HeadRot;
         current[4] = rotation;
-        lean = controller.HeadLean; // ENSURE THESE TWO ARE THE RIGHT WAY ROUND
-        current[5] = rotation;
-        incline = controller.HeadBend; // ENSURE THESE TWO ARE THE RIGHT WAY ROUND
+        lean = controller.HeadLean;
+        current[5] = lean;
+        incline = controller.HeadBend;
         current[6] = incline;
         session[0] = distance; // Distance is already cumulative
         for (i = 1; i < 7; i++) // Consequently, start at index 1
@@ -43,7 +44,7 @@ public class GetData : MonoBehaviour
         }
     }
 
-    // Get all data, current/session specified by parameter - after Update()
+    // Get all data, current/session specified by parameter
     public static double[] GetAllData(string type)
     {
         if (type == "current")
@@ -61,8 +62,7 @@ public class GetData : MonoBehaviour
         }
     }
 
-    // Get a metric, current/session specified by parameter - after Update()
-    // Test on resistance and heart rate - they may not be doubles ===============================================
+    // Get a metric, current/session specified by parameter
     public static double GetMetric(string metric, string type)
     {
         if (type == "current")

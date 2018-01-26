@@ -1,7 +1,6 @@
 ﻿// Outputs current date/time in multiple FHIR-compliant formats
 
-
-// CHECK ALL OF THESE WORK
+//TODO CHECK ALL OF THESE WORK
 
 using System;
 using UnityEngine;
@@ -15,7 +14,7 @@ public class DateTimeFormats
         // Format for use in file names
         if (type == "filename")
         {
-            dtFormatted = dt.ToString("MM-dd-HH:mm:ss");
+            dtFormatted = dt.ToString("MM-dd-HH\"h\"mm\"m\"ss\"s\"");
         }
         // Date only
         else if (type == "date")
