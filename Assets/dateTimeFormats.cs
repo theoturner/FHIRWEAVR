@@ -1,4 +1,4 @@
-﻿// Outputs current date/time in multiple FHIR-compliant formats
+﻿// Outputs current date/time in multiple FHIR-compliant formats.
 
 //TODO CHECK ALL OF THESE WORK
 

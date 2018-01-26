@@ -1,4 +1,4 @@
-﻿// Scripts for generating FHIR Documents and Dveice Profiles
+﻿// Scripts for generating FHIR Documents and Device Profiles.
 
 //TODO 1-2
 //TODO Verify with a FHIR team member that you have all required elements
@@ -8,7 +8,8 @@
 using System.IO;
 using System.Xml;
 
-//TODO1 push with HTML post. MUST PUSH DEVICE PROFILE ALSO!
+//TODO1 COMPLETE POSTDATA.CS
+
 //TODO2 Find out how to overwrite old XML entries for continuously updating (current) metrics ==========
 
 class GenFHIR
@@ -108,7 +109,7 @@ class GenFHIR
         xw.WriteStartElement("coding");
         xw.WriteStartElement("system");
         xw.WriteAttributeString("value", "http://loinc.org");
-        // Do we need a 'code' sub-element of 'coding'? See FHIR document example.
+        //TODO2 Do we need a 'code' sub-element of 'coding'? See FHIR document example.
         xw.WriteFullEndElement();
         xw.WriteEndElement();
         xw.WriteStartElement("text");
@@ -122,7 +123,7 @@ class GenFHIR
 
         xw.WriteStartElement("subject");
         xw.WriteStartElement("reference");
-        xw.WriteAttributeString("value", "VirZOOM-device.xml"); //change if you change directory structure
+        xw.WriteAttributeString("value", "VirZOOM-device-profile.xml"); //TODO2 change if you change directory structure
         xw.WriteFullEndElement();
         xw.WriteEndElement();
 
@@ -132,7 +133,7 @@ class GenFHIR
 
         xw.WriteStartElement("author");
         xw.WriteStartElement("reference");
-        xw.WriteAttributeString("value", "VirZOOM-device-profile.xml"); //change if you change directory structure
+        xw.WriteAttributeString("value", "VirZOOM-device-profile.xml"); //TODO2 change if you change directory structure
         xw.WriteFullEndElement();
         xw.WriteEndElement();
 

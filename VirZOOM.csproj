@@ -285,6 +285,7 @@
     <Compile Include="Assets\DateTimeFormats.cs" />
     <Compile Include="Assets\GenFHIR.cs" />
     <Compile Include="Assets\GetData.cs" />
+    <Compile Include="Assets\PostData.cs" />
     <Compile Include="Assets\VZ\Scripts\core\VZColliderInfo.cs" />
     <Compile Include="Assets\VZ\Scripts\core\VZController.cs" />
     <Compile Include="Assets\VZ\Scripts\core\VZControllerMap.cs" />
