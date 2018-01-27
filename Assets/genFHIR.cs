@@ -8,16 +8,17 @@
 using System.IO;
 using System.Xml;
 
-//TODO1 COMPLETE POSTDATA.CS
+//TODO1 COMPLETE PUSHDATA.CS
 
 //TODO2 Find out how to overwrite old XML entries for continuously updating (current) metrics ==========
 
 class GenFHIR
 {
+    private static string path = PathCreator.path;
 
     public static void Device() // Put parameters here if you need them.
     {
-        XmlWriter xw = XmlWriter.Create("VirZOOM-device-profile.xml");
+        XmlWriter xw = XmlWriter.Create(path + "VirZOOM-device-profile.xml");
 
         xw.WriteStartDocument();
 
@@ -75,7 +76,7 @@ class GenFHIR
         string dateTime = DateTimeFormats.GetDT("full");
         string fileDateTime = DateTimeFormats.GetDT("filename");
 
-        XmlWriter xw = XmlWriter.Create("VirZOOM-output-" + fileDateTime + ".xml");
+        XmlWriter xw = XmlWriter.Create(path + "VirZOOM-output-" + fileDateTime + ".xml");
         int i;
         string[] identifiers = { "distance", "speed", "resistance", "heartrate", "rotation", "lean", "incline" };
 
