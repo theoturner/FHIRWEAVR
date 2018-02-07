@@ -5,26 +5,30 @@ using System.Globalization;
 using UnityEngine.UI;
 using System;
 using System.IO;
+using System.Collections;
 
 public class DisplayData : MonoBehaviour
 {
-    TextMesh FHIRHUD;
-    private string[] descriptors = { "Distance: ", "Speed: ", "Resistance: ", "Heartrate: ", "Rotation: ", "Lean: ", "Incline: " };
-    private double[] allData = new double[7];
-    private double metricData;
-    private string spatialUIText;
-    private int dataCount;
+
+    GetData DataInstance;
+    static TextMesh FHIRHUD;
+    string[] descriptors = { "Distance: ", "Speed: ", "Resistance: ", "Heartrate: ", "Rotation: ", "Lean: ", "Incline: " };
+    double[] allData = new double[7];
+    double metricData;
+    string spatialUIText;
+    int dataCount;
 
     void Start()
     {
+        DataInstance = GetData.Instance;
         FHIRHUD = GetComponent<TextMesh>();
-        FHIRHUD.text = "";
+        FHIRHUD.text = "MAKE ME BLANK WHEN DONE";
     }
 
-    void All(string type, double duration)
+    public void All(string type, double duration)
     {
         // Type handling done in GetData.cs
-        allData = GetData.GetAllData(type);
+        allData = DataInstance.GetAllData(type);
         spatialUIText = type.ToUpper() + " READINGS\n";
 
         //var controller = VZPlayer.Controller;
@@ -34,10 +38,7 @@ public class DisplayData : MonoBehaviour
             spatialUIText = spatialUIText + descriptors[dataCount] + allData[dataCount] + "\n";
         }
         FHIRHUD.text = spatialUIText;
-        if (duration != 0 & Time.time > duration)
-        {
-            FHIRHUD.text = "";
-        }
+        StartCoroutine(HideAfterDuration(duration));
             /*
             "LeftGrip: " + GripText(controller.LeftButton.Down, controller.DpadUp.Down, controller.DpadDown.Down, controller.DpadLeft.Down, controller.DpadRight.Down) + "\n" +
             "RightGrip: " + GripText(controller.RightButton.Down, controller.RightUp.Down, controller.RightDown.Down, controller.RightLeft.Down, controller.RightRight.Down);
@@ -47,16 +48,14 @@ public class DisplayData : MonoBehaviour
     public void Metric(string type, string metric, double duration)
     {
         // Type handling done in GetData.cs
-        metricData = GetData.GetMetric(type, metric);
+        metricData = DataInstance.GetMetric(type, metric);
         spatialUIText = type.ToUpper() + " READING\n";
 
         //var controller = VZPlayer.Controller;
 
         FHIRHUD.text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(metric) + ": " + metricData;
-        if (duration != 0 & Time.time > duration)
-        {
-            FHIRHUD.text = "";
-        }
+        StartCoroutine(HideAfterDuration(duration));
+
         /*
         "LeftGrip: " + GripText(controller.LeftButton.Down, controller.DpadUp.Down, controller.DpadDown.Down, controller.DpadLeft.Down, controller.DpadRight.Down) + "\n" +
         "RightGrip: " + GripText(controller.RightButton.Down, controller.RightUp.Down, controller.RightDown.Down, controller.RightLeft.Down, controller.RightRight.Down);
@@ -65,6 +64,12 @@ public class DisplayData : MonoBehaviour
 
     public void Hide()
     {
+        FHIRHUD.text = "";
+    }
+
+    IEnumerator HideAfterDuration(double duration)
+    {
+        yield return new WaitForSeconds((float)duration);
         FHIRHUD.text = "";
     }
 

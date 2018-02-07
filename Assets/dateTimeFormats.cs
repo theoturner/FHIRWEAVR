@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class DateTimeFormats
 {
+    // Anything wrong with making this static? User would have to instantiate DateTimeFormats otherwise.
 	public static string GetDT(string type)
 	{
         string dtFormatted;

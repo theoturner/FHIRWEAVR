@@ -4,7 +4,6 @@
 //TODO Verify with a FHIR team member that you have all required elements
 //TODO Is using static this much bad? Try converting to singleton.
 //TODO for documentation: document manual initial creation of device profile, will be created on document creation if does not exist.
-
 using System.IO;
 using System.Xml;
 
@@ -14,6 +13,8 @@ using System.Xml;
 
 class GenFHIR
 {
+
+    // Why does this have to be static here? ***********************************************************************
     static string path = GetData.path;
 
     public static void Device() // Put parameters here if you need them.
@@ -70,7 +71,7 @@ class GenFHIR
         }
 
         double[] output = new double[7];
-        output = GetData.GetAllData(type); // type handling done in getData.cs
+        output = GetData.Instance.GetAllData(type); // type handling done in getData.cs
 
         // Get date/time immediately after getting data
         string dateTime = DateTimeFormats.GetDT("full");

@@ -7,7 +7,23 @@ using UnityEngine;
 public class GetData : MonoBehaviour
 {
 
-    //public static TextMesh FHIRHUD;
+    // Create singleton
+    private static GetData local = null;
+    public static GetData Instance
+    {
+        get
+        {
+            if (local == null)
+                local = (GetData)FindObjectOfType(typeof(GetData));
+            return local;
+        }
+    }
+    void Awake()
+    {
+        local = this;
+    }
+
+    // Static because don't want path changed
     public static string path;
     private VZController controller;
     private static double distance, speed, resistance, heartrate, rotation, lean, incline;
@@ -16,9 +32,8 @@ public class GetData : MonoBehaviour
     // Initialization
     void Start()
     {
-        path = Application.persistentDataPath + "/";
         controller = VZPlayer.Controller;
-        //FHIRHUD = GetComponent<TextMesh>();
+        path = Application.persistentDataPath;
         current = new double[7];
         session = new double[7];
     }
@@ -49,7 +64,7 @@ public class GetData : MonoBehaviour
     }
 
     // Get all data, current/session specified by parameter
-    public static double[] GetAllData(string type)
+    public double[] GetAllData(string type)
     {
         if (type == "current")
         {
@@ -67,7 +82,7 @@ public class GetData : MonoBehaviour
     }
 
     // Get a metric, current/session specified by parameter
-    public static double GetMetric(string metric, string type)
+    public double GetMetric(string metric, string type)
     {
         if (type == "current")
         {

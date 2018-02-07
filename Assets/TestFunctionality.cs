@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class TestFunctionality : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	}
+    // ||||| User must add this initialisation |||||
+    GetData myDataInstance;
+
+    // Use this for initialization
+    void Start ()
+    {
+        // ||||| User must add this in start |||||
+        myDataInstance = GetData.Instance;
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        //DisplayData.All();
-        Debug.Log(GetData.GetMetric("rotation", "current"));
+        Debug.Log(myDataInstance.GetMetric("rotation", "current"));
+        Debug.Log(GetData.path);
         if (Time.frameCount == 300)
         {
             GenFHIR.Document("session");
