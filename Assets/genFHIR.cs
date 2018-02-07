@@ -14,7 +14,7 @@ using System.Xml;
 
 class GenFHIR
 {
-    private static string path = PathCreator.path;
+    static string path = GetData.path;
 
     public static void Device() // Put parameters here if you need them.
     {
@@ -64,7 +64,7 @@ class GenFHIR
     public static void Document(string type)
     {
 
-        if (!(File.Exists(@"VirZOOM-device.xml")))
+        if (!(File.Exists(path + "VirZOOM-device-profile.xml")))
         {
             Device();
         }

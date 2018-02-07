@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class GetData : MonoBehaviour
 {
+
+    //public static TextMesh FHIRHUD;
+    public static string path;
     private VZController controller;
     private static double distance, speed, resistance, heartrate, rotation, lean, incline;
     private static double[] current, session;
@@ -13,10 +16,11 @@ public class GetData : MonoBehaviour
     // Initialization
     void Start()
     {
+        path = Application.persistentDataPath + "/";
         controller = VZPlayer.Controller;
+        //FHIRHUD = GetComponent<TextMesh>();
         current = new double[7];
         session = new double[7];
-        GenFHIR.Document("session");
     }
 
     // Called once every frame

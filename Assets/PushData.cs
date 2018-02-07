@@ -7,21 +7,12 @@ using System;
 using System.Net;
 using System.IO;
 
-public class PushData : MonoBehaviour
+public class PushData
 {
-    public string host = "ftp://host.com"; //READ IN
-    public string username = "username"; //READ IN
-    public string password = "password"; //READ IN
-    public string path;
 
-    void Start()
+    public void FTPUpload(string fileToUpload, string host, string username, string password)
     {
-        FTPUpload();
-    }
-
-    public void FTPUpload()
-    {
-        path = PathCreator.path + "filetoupload.xml"; //READ IN
+        string path = GetData.path + fileToUpload;
 
         WebClient client = new System.Net.WebClient();
         Uri uri = new Uri(host + new FileInfo(path).Name);
@@ -41,4 +32,5 @@ public class PushData : MonoBehaviour
     {
         Debug.Log("Uploaded");
     }
+
 }

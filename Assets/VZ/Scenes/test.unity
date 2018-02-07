@@ -88,6 +88,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 0
 --- !u!196 &4
@@ -220,7 +221,46 @@ Prefab:
       propertyPath: Camera
       value: 
       objectReference: {fileID: 1770854970}
-    m_RemovedComponents: []
+    - target: {fileID: 1000012637726108, guid: 3820ddc41bffb9d47ab34f161e54123e, type: 2}
+      propertyPath: m_Name
+      value: FHIRHUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 102000013750504474, guid: 3820ddc41bffb9d47ab34f161e54123e,
+        type: 2}
+      propertyPath: m_Text
+      value: 'HUD NOT LOADED.
+
+        PLEASE CHECK FHIRHUD PREFAB COMPONENTS.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 102000013750504474, guid: 3820ddc41bffb9d47ab34f161e54123e,
+        type: 2}
+      propertyPath: m_FontSize
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013233178894, guid: 3820ddc41bffb9d47ab34f161e54123e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.503
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013233178894, guid: 3820ddc41bffb9d47ab34f161e54123e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 1.942
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013233178894, guid: 3820ddc41bffb9d47ab34f161e54123e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.422
+      objectReference: {fileID: 0}
+    - target: {fileID: 102000013750504474, guid: 3820ddc41bffb9d47ab34f161e54123e,
+        type: 2}
+      propertyPath: m_Alignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 102000013750504474, guid: 3820ddc41bffb9d47ab34f161e54123e,
+        type: 2}
+      propertyPath: m_LineSpacing
+      value: 1.2
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114000011940784660, guid: 3820ddc41bffb9d47ab34f161e54123e, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 3820ddc41bffb9d47ab34f161e54123e, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &475822364
@@ -284,9 +324,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Convex: 0
-  m_InflateMesh: 0
+  m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &475822367
@@ -313,17 +353,6 @@ Transform:
 GameObject:
   m_PrefabParentObject: {fileID: 100932, guid: 3820ddc41bffb9d47ab34f161e54123e, type: 2}
   m_PrefabInternal: {fileID: 442740516}
---- !u!114 &677584805
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 677584804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1894830fb61524044bb6af4e1bbf4dd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &677584806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,6 +362,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ab496766a76b664bb7dc1d0597654a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &677584810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 677584804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a35b824355f823142bc9cba989a3c75d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1684769342 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000012637726108, guid: 3820ddc41bffb9d47ab34f161e54123e,
+    type: 2}
+  m_PrefabInternal: {fileID: 442740516}
+--- !u!114 &1684769346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1684769342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b784db5322e3fe544ad616b495b878d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1770854965
@@ -406,6 +462,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
