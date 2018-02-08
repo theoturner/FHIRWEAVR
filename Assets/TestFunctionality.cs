@@ -2,24 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// TODO WHY DOES GETMETRIC NOT MATCH GENFHIR RESULT?
+// TODO RENAME THIS FILE TO Example.cs
+
 public class TestFunctionality : MonoBehaviour {
 
     // ||||| User must add this initialisation |||||
-    GetData myDataInstance;
+    DataHandler myDataInstance;
 
     // Use this for initialization
     void Start ()
     {
         // ||||| User must add this in start |||||
-        myDataInstance = GetData.Instance;
+        myDataInstance = DataHandler.Instance;
     }
 	
 	// Update is called once per frame
 	void Update () {
         Debug.Log(myDataInstance.GetMetric("rotation", "current"));
-        Debug.Log(GetData.path);
         if (Time.frameCount == 300)
         {
+            myDataInstance.DisplayMetric("resistance", "current", 5);
             GenFHIR.Document("session");
         }
     }

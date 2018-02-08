@@ -6,6 +6,7 @@
 //TODO for documentation: document manual initial creation of device profile, will be created on document creation if does not exist.
 using System.IO;
 using System.Xml;
+using UnityEngine;
 
 //TODO1 COMPLETE PUSHDATA.CS
 
@@ -14,12 +15,9 @@ using System.Xml;
 class GenFHIR
 {
 
-    // Why does this have to be static here? ***********************************************************************
-    static string path = GetData.path;
-
     public static void Device() // Put parameters here if you need them.
     {
-        XmlWriter xw = XmlWriter.Create(path + "VirZOOM-device-profile.xml");
+        XmlWriter xw = XmlWriter.Create(DataHandler.path + "VirZOOM-device-profile.xml");
 
         xw.WriteStartDocument();
 
@@ -65,20 +63,20 @@ class GenFHIR
     public static void Document(string type)
     {
 
-        if (!(File.Exists(path + "VirZOOM-device-profile.xml")))
+        if (!(File.Exists(DataHandler.path + "VirZOOM-device-profile.xml")))
         {
             Device();
         }
 
-        double[] output = new double[7];
-        output = GetData.Instance.GetAllData(type); // type handling done in getData.cs
+        // Type handling done in DataHandler
+        double[] output = DataHandler.Instance.GetAllData(type);
 
         // Get date/time immediately after getting data
         string dateTime = DateTimeFormats.GetDT("full");
         string fileDateTime = DateTimeFormats.GetDT("filename");
 
-        XmlWriter xw = XmlWriter.Create(path + "VirZOOM-output-" + fileDateTime + ".xml");
-        int i;
+        XmlWriter xw = XmlWriter.Create(DataHandler.path + "VirZOOM-output-" + fileDateTime + ".xml");
+        int dataCount;
         string[] identifiers = { "distance", "speed", "resistance", "heartrate", "rotation", "lean", "incline" };
 
         xw.WriteStartDocument();
@@ -157,11 +155,11 @@ class GenFHIR
 
 
         // FHIR List entries
-        for (i = 0; i < 7; i++)
+        for (dataCount = 0; dataCount < 7; dataCount++)
         {
             xw.WriteStartElement("entry");
             xw.WriteStartElement("item");
-            xw.WriteAttributeString(identifiers[i], output[i].ToString());
+            xw.WriteAttributeString(identifiers[dataCount], output[dataCount].ToString());
             xw.WriteFullEndElement();
             xw.WriteEndElement();
         }

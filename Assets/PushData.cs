@@ -12,7 +12,7 @@ public class PushData
 
     public void FTPUpload(string fileToUpload, string host, string username, string password)
     {
-        string path = GetData.path + fileToUpload;
+        string path = DataHandler.path + fileToUpload;
 
         WebClient client = new System.Net.WebClient();
         Uri uri = new Uri(host + new FileInfo(path).Name);
