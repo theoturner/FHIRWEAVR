@@ -1,24 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 // TODO WHY DOES GETMETRIC NOT MATCH GENFHIR RESULT?
 // TODO RENAME THIS FILE TO Example.cs
 
 public class TestFunctionality : MonoBehaviour {
 
-    // ||||| User must add this initialisation |||||
+    // You must add this at the start of your MonoBehaviour class. Name myDataInstance whatever you'd like.
     DataHandler myDataInstance;
 
-    // Use this for initialization
+    // This function is used for initialisation.
     void Start ()
     {
-        // ||||| User must add this in start |||||
+        // You must must add this in Start().
         myDataInstance = DataHandler.Instance;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // This function is called once per frame.
+    // Example uses of FHIRWEAVR are included.
+    void Update () {
         Debug.Log(myDataInstance.GetMetric("rotation", "current"));
         if (Time.frameCount == 300)
         {

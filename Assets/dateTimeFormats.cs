@@ -1,13 +1,14 @@
 ﻿// Outputs current date/time in multiple FHIR-compliant formats.
 
-//TODO CHECK ALL OF THESE WORK
-
 using System;
 using UnityEngine;
 
+//TODO CHECK ALL OF THESE WORK
+//TODO Anything wrong with making this static? User would have to instantiate DateTimeFormats otherwise.
+
 public class DateTimeFormats
 {
-    // Anything wrong with making this static? User would have to instantiate DateTimeFormats otherwise.
+    //TODO Anything wrong with making this static? User would have to instantiate DateTimeFormats otherwise.
 	public static string GetDT(string type)
 	{
         string dtFormatted;

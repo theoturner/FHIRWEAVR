@@ -1,21 +1,17 @@
 ﻿// Scripts for generating FHIR Documents and Device Profiles.
 
-//TODO 1-2
-//TODO Verify with a FHIR team member that you have all required elements
-//TODO Is using static this much bad? Try converting to singleton.
-//TODO for documentation: document manual initial creation of device profile, will be created on document creation if does not exist.
 using System.IO;
 using System.Xml;
-using UnityEngine;
 
-//TODO1 COMPLETE PUSHDATA.CS
-
-//TODO2 Find out how to overwrite old XML entries for continuously updating (current) metrics ==========
+//TODO Verify with a FHIR team member that you have all required elements
+//TODO for documentation: document manual initial creation of device profile, will be created on document creation if does not exist.
+//TODO Device(): read and change to inactive if device disconnected
+//TODO MAYBE Find out how to overwrite old XML entries for continuously updating (current) metrics
 
 class GenFHIR
 {
 
-    public static void Device() // Put parameters here if you need them.
+    public static void Device()
     {
         XmlWriter xw = XmlWriter.Create(DataHandler.path + "VirZOOM-device-profile.xml");
 
@@ -102,14 +98,13 @@ class GenFHIR
         xw.WriteStartElement("Composition");
 
         xw.WriteStartElement("status");
-        xw.WriteAttributeString("value", "final"); //TODO2 change to 'amended' if changed
+        xw.WriteAttributeString("value", "final");
         xw.WriteFullEndElement();
 
         xw.WriteStartElement("type");
         xw.WriteStartElement("coding");
         xw.WriteStartElement("system");
         xw.WriteAttributeString("value", "http://loinc.org");
-        //TODO2 Do we need a 'code' sub-element of 'coding'? See FHIR document example.
         xw.WriteFullEndElement();
         xw.WriteEndElement();
         xw.WriteStartElement("text");
@@ -118,12 +113,12 @@ class GenFHIR
         xw.WriteEndElement();
 
         xw.WriteStartElement("status");
-        xw.WriteAttributeString("value", "final"); //TODO2 change to 'amended' if changed
+        xw.WriteAttributeString("value", "final");
         xw.WriteFullEndElement();
 
         xw.WriteStartElement("subject");
         xw.WriteStartElement("reference");
-        xw.WriteAttributeString("value", "VirZOOM-device-profile.xml"); //TODO2 change if you change directory structure
+        xw.WriteAttributeString("value", "VirZOOM-device-profile.xml");
         xw.WriteFullEndElement();
         xw.WriteEndElement();
 
@@ -133,7 +128,7 @@ class GenFHIR
 
         xw.WriteStartElement("author");
         xw.WriteStartElement("reference");
-        xw.WriteAttributeString("value", "VirZOOM-device-profile.xml"); //TODO2 change if you change directory structure
+        xw.WriteAttributeString("value", "VirZOOM-device-profile.xml");
         xw.WriteFullEndElement();
         xw.WriteEndElement();
 
@@ -146,7 +141,7 @@ class GenFHIR
         xw.WriteStartElement("List");
 
         xw.WriteStartElement("status");
-        xw.WriteAttributeString("value", "current"); //TODO2 overwrite to 'retired' if new document made ==========
+        xw.WriteAttributeString("value", "current");
         xw.WriteFullEndElement();
 
         xw.WriteStartElement("mode");

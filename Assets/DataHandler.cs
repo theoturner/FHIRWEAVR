@@ -5,7 +5,7 @@ using System.Collections;
 using System.Globalization;
 using UnityEngine;
 
-// LATER: go directly to bike without SDK using mBikeState
+// TODO MAYBE: go directly to bike without SDK using mBikeState
 
 public class DataHandler : MonoBehaviour
 {
@@ -175,8 +175,6 @@ public class DataHandler : MonoBehaviour
         int dataCount;
         spatialUIText = type.ToUpper() + " READINGS\n";
 
-        //var controller = VZPlayer.Controller;
-
         for (dataCount = 0; dataCount < 7; dataCount++)
         {
             spatialUIText = spatialUIText + descriptors[dataCount] + allData[dataCount] + "\n";
@@ -194,8 +192,6 @@ public class DataHandler : MonoBehaviour
         // Type handling done in GetMetric
         double metricData = GetMetric(metric, type);
         spatialUIText = type.ToUpper() + " READING\n";
-
-        //var controller = VZPlayer.Controller;
 
         FHIRHUD.text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(metric) + ": " + metricData;
         StartCoroutine(HideAfterDuration(duration));
