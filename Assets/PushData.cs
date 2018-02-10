@@ -1,6 +1,6 @@
 ﻿// Sends data not yet on server to server via FTP.
 
-//TODO TEST THIS. ESPECIALLY TEST SENDING TO NONEXISTENT HOST TO SEE IF WEBCLIENT HANDLES ERROR AUTOMATICALLY, IF NOT ADD ERROR HANDLING.
+//TODO MAYBE Detect if server exists/allows uploads and inform the dev using Debug.Log if not
 
 using System.IO;
 using System.Linq;
@@ -12,6 +12,7 @@ public class PushData
 
     public void Upload(string fileToUpload, string host)
     {
+
         // Note that HTTP allows additional / characters so don't need to check final character of host
         if (!FileExistsAtURL(host + "/VirZOOM-device-profile.xml"))
         {
@@ -32,13 +33,13 @@ public class PushData
             Debug.Log("File not found. Please check the filename or use ManualUpload(string fileToUpload, string filePath, string host) for files in non-default save locations.");
         }
 
-        UploadViaClient(host, fileToUpload);
+        UploadViaClient(host, fullFilePath);
     }
 
     public void ManualUpload(string fileToUpload, string filePath, string host)
     {
         char lastPathChar = filePath[filePath.Length - 1];
-        // Note that DOS uses / and \ interchangeably, even allowing both in a single path
+        // Note that DOS uses / and \ interchangeably, even allowing both in a single path. Note \\ is an escape on \.
         if (lastPathChar != '/' || lastPathChar != '\\')
         {
             filePath = filePath + '/';
