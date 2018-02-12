@@ -28,10 +28,9 @@ public class TestFunctionality : MonoBehaviour {
             myDataInstance.DisplayMetric("resistance", "current", 5);
             GenFHIR.Document("session");
             Debug.Log(DataHandler.path);
-            Thread workerOne = new Thread(() => myUploaderInstance.Upload("last", "http://ptsv2.com/t/VirZOOM/post"));
-            workerOne.Start();
             //myUploaderInstance.Upload("last", "http://ptsv2.com/t/VirZOOM/post");
-            //myUploaderInstance.ManualUpload("VirZOOM-output-02-08-16h18m02s.xml", DataHandler.path, "http://ptsv2.com/t/VirZOOM/post");
+            myUploaderInstance.ManualUpload("VirZOOM-output-02-08-16h18m02s.xml", DataHandler.path, "http://ptsv2.com/t/VirZOOM/post");
+            //myUploaderInstance.FileExistsAtURL("http://ptsv2.com/t/VirZOOM/post/VirZOOM-device-profile.xml");
         }
     }
 }
