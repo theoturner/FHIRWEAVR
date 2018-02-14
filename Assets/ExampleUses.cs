@@ -1,7 +1,4 @@
-﻿using System.Threading;
-using UnityEngine;
-
-// TODO WHY DOES GETMETRIC NOT MATCH GENFHIR RESULT?
+﻿using UnityEngine;
 
 public class ExampleUses : MonoBehaviour
 {
@@ -23,14 +20,14 @@ public class ExampleUses : MonoBehaviour
     void Update()
     {
         //Debug.Log(DateTimeFormats.GetDT("full"));
-        Debug.Log(myDataInstance.GetMetric("rotation", "current"));
+        //Debug.Log(myDataInstance.GetMetric("rotation", "current"));
         if (Time.frameCount == 300)
         {
-            myDataInstance.DisplayMetric("resistance", "current", 5);
-            GenFHIR.Document("session");
-            Debug.Log(DataHandler.path);
+            //myDataInstance.DisplayMetric("resistance", "current", 5);
+            //GenFHIR.Document("session");
+            //Debug.Log(DataHandler.path);
             //myUploaderInstance.Upload("last", "http://ptsv2.com/t/VirZOOM/post");
-            myUploaderInstance.ManualUpload("VirZOOM-output-02-08-16h18m02s.xml", DataHandler.path, "http://ptsv2.com/t/VirZOOM/post");
+            //myUploaderInstance.ManualUpload("VirZOOM-output-02-08-16h18m02s.xml", DataHandler.path, "http://ptsv2.com/t/VirZOOM/post");
             //myUploaderInstance.FileExistsAtURL("http://ptsv2.com/t/VirZOOM/post/VirZOOM-device-profile.xml");
         }
     }

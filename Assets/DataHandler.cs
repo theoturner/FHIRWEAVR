@@ -5,7 +5,6 @@ using System.Collections;
 using System.Globalization;
 using UnityEngine;
 
-// TODO Left/right grip text overlays (see commented code below)
 // TODO MAYBE: go directly to bike without SDK using mBikeState
 
 public class DataHandler : MonoBehaviour
@@ -213,48 +212,5 @@ public class DataHandler : MonoBehaviour
         yield return new WaitForSeconds((float)duration);
         FHIRHUD.text = "";
     }
-
-
-    /*
-    string TypeText(int type, int version)
-    {
-        if (type < 0)
-            return "none";
-        else if (type == 0)
-            return "unsupported bike";
-        else if (type == 1)
-            return "alpha bike";
-        else if (type == 2)
-        {
-            if (version == 2)
-                return "bike sensor";
-            else
-                return "beta bike";
-        }
-        else
-            return "unknown";
-    }
-
-    string GripText(bool trigger, bool up, bool down, bool left, bool right)
-    {
-        string text = "";
-
-        if (trigger)
-            text += "trigger ";
-        if (up)
-            text += "up ";
-        if (down)
-            text += "down ";
-        if (left)
-            text += "left ";
-        if (right)
-            text += "right ";
-
-        return text;
-    }
-    */
-
-
-
 
 }
