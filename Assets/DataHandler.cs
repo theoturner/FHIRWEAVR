@@ -5,6 +5,7 @@ using System.Collections;
 using System.Globalization;
 using UnityEngine;
 
+// TODO Left/right grip text overlays (see commented code below)
 // TODO MAYBE: go directly to bike without SDK using mBikeState
 
 public class DataHandler : MonoBehaviour

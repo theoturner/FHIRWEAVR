@@ -3,12 +3,9 @@
 using System;
 using UnityEngine;
 
-//TODO CHECK ALL OF THESE WORK
-//TODO Anything wrong with making this static? User would have to instantiate DateTimeFormats otherwise.
-
 public class DateTimeFormats
 {
-    //TODO Anything wrong with making this static? User would have to instantiate DateTimeFormats otherwise.
+    // <CODE REVIEW> Anything wrong with making this static? User would have to instantiate DateTimeFormats otherwise.
 	public static string GetDT(string type)
 	{
         string dtFormatted;
