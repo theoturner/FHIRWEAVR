@@ -10,6 +10,7 @@ public class ExampleUses : MonoBehaviour
     // This function is used for initialisation.
     void Start()
     {
+
         // You must must add this in Start().
         myDataInstance = DataHandler.Instance;
 
@@ -19,9 +20,11 @@ public class ExampleUses : MonoBehaviour
     // Example uses of FHIRWEAVR are included.
     void Update()
     {
+
         //Debug.Log(DateTimeFormats.GetDT("full"));
         //Debug.Log(myDataInstance.GetMetric("rotation", "current"));
-        if (Time.frameCount == 300)
+        /*
+        if (Time.frameCount == 100)
         {
             //myDataInstance.DisplayMetric("resistance", "current", 5);
             //GenFHIR.Document("session");
@@ -30,5 +33,7 @@ public class ExampleUses : MonoBehaviour
             //myUploaderInstance.ManualUpload("VirZOOM-output-02-08-16h18m02s.xml", DataHandler.path, "http://ptsv2.com/t/VirZOOM/post");
             //myUploaderInstance.FileExistsAtURL("http://ptsv2.com/t/VirZOOM/post/VirZOOM-device-profile.xml");
         }
+        */
+
     }
 }

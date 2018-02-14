@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class DateTimeFormats
 {
+
     // <CODE REVIEW> Anything wrong with making this static? User would have to instantiate DateTimeFormats otherwise.
 	public static string GetDT(string type)
 	{
+
         string dtFormatted;
         DateTime dt = DateTime.Now;
         // Format for use in file names
@@ -36,5 +38,7 @@ public class DateTimeFormats
             dtFormatted = dt.ToString("yyyy-MM-ddTHH:mm:ssZzzz");
         }
         return dtFormatted;
+
     }
+
 }

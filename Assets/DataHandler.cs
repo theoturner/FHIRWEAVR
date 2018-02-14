@@ -36,15 +36,18 @@ public class DataHandler : MonoBehaviour
     // Initialization
     void Start()
     {
+
         controller = VZPlayer.Controller;
         path = Application.persistentDataPath + "/";
         FHIRHUD = GetComponentInChildren<TextMesh>();
         FHIRHUD.text = "";
+
     }
 
-    // Called once every frame
+    // Called once every frame - updates metrics
     void Update()
     {
+
         // Distance is already cumulative
         distance = controller.Distance;
         speed = controller.InputSpeed;
@@ -59,11 +62,13 @@ public class DataHandler : MonoBehaviour
         leanTotal += lean;
         incline = controller.HeadBend;
         inclineTotal += incline;
+
     }
 
     // Get all data, current/session specified by parameter
     public double[] GetAllData(string type)
     {
+
         double frames = Time.frameCount;
         double[] current = { distance, speed, resistance, heartrate, rotation, lean, incline };
         double[] session = { distance, speedTotal / frames, resistanceTotal / frames, heartrateTotal / frames, rotationTotal / frames, leanTotal / frames, inclineTotal / frames };
@@ -80,11 +85,13 @@ public class DataHandler : MonoBehaviour
             Debug.Log("That type does not exist. Types are 'current' and 'session.'");
             return new double[7]; // Defaults to 0 for all metrics
         }
+
     }
 
     // Get a metric, current/session specified by parameter
     public double GetMetric(string metric, string type)
     {
+
         if (type == "current")
         {
             if (metric == "distance")
@@ -163,12 +170,14 @@ public class DataHandler : MonoBehaviour
             Debug.Log("That type does not exist. Types are 'current' and 'session.'");
             return 0;
         }
+
     }
 
 
 
     public void DisplayAllData(string type, double duration)
     {
+
         string[] descriptors = { "Distance: ", "Speed: ", "Resistance: ", "Heartrate: ", "Rotation: ", "Lean: ", "Incline: " };
         // Type handling done in GetAllData
         double[] allData = GetAllData(type);
@@ -180,37 +189,41 @@ public class DataHandler : MonoBehaviour
             spatialUIText = spatialUIText + descriptors[dataCount] + allData[dataCount] + "\n";
         }
         FHIRHUD.text = spatialUIText;
-        StartCoroutine(HideAfterDuration(duration));
-        /*
-        "LeftGrip: " + GripText(controller.LeftButton.Down, controller.DpadUp.Down, controller.DpadDown.Down, controller.DpadLeft.Down, controller.DpadRight.Down) + "\n" +
-        "RightGrip: " + GripText(controller.RightButton.Down, controller.RightUp.Down, controller.RightDown.Down, controller.RightLeft.Down, controller.RightRight.Down);
-        */
+        if (duration != 0)
+        {
+            StartCoroutine(HideAfterDuration(duration));
+        }
+
     }
 
     public void DisplayMetric(string metric, string type, double duration)
     {
+
         // Type handling done in GetMetric
         double metricData = GetMetric(metric, type);
         spatialUIText = type.ToUpper() + " READING\n";
 
         FHIRHUD.text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(metric) + ": " + metricData;
-        StartCoroutine(HideAfterDuration(duration));
+        if (duration != 0)
+        {
+            StartCoroutine(HideAfterDuration(duration));
+        }
 
-        /*
-        "LeftGrip: " + GripText(controller.LeftButton.Down, controller.DpadUp.Down, controller.DpadDown.Down, controller.DpadLeft.Down, controller.DpadRight.Down) + "\n" +
-        "RightGrip: " + GripText(controller.RightButton.Down, controller.RightUp.Down, controller.RightDown.Down, controller.RightLeft.Down, controller.RightRight.Down);
-        */
     }
 
     public void Hide()
     {
+
         FHIRHUD.text = "";
+
     }
 
     IEnumerator HideAfterDuration(double duration)
     {
+
         yield return new WaitForSeconds((float)duration);
         FHIRHUD.text = "";
+
     }
 
 }

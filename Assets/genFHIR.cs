@@ -13,6 +13,7 @@ class GenFHIR
 
     public static void Device()
     {
+
         XmlWriter xw = XmlWriter.Create(DataHandler.path + "VirZOOM-device-profile.xml");
 
         xw.WriteStartDocument();
@@ -24,7 +25,7 @@ class GenFHIR
         xw.WriteFullEndElement();
 
         xw.WriteStartElement("status");
-        xw.WriteAttributeString("value", "active"); //TODO2 read and change to inactive if device disconnected
+        xw.WriteAttributeString("value", "active"); //TODO read and change to inactive if device disconnected
         xw.WriteFullEndElement();
 
         xw.WriteStartElement("type");
@@ -165,5 +166,7 @@ class GenFHIR
 
         xw.WriteEndDocument();
         xw.Close();
+
     }
+
 }
