@@ -1,5 +1,6 @@
 ﻿// Scripts for generating FHIR Documents and Device Profiles.
 
+using System;
 using System.IO;
 using System.Xml;
 
@@ -75,6 +76,7 @@ class GenFHIR
         XmlWriter xw = XmlWriter.Create(DataHandler.path + "VirZOOM-output-" + fileDateTime + ".xml");
         int dataCount;
         string[] identifiers = { "distance", "speed", "resistance", "heartrate", "rotation", "lean", "incline" };
+        string[] unit = { " km", " m/s", "", " bpm", " rad", " m", " m" };
 
         xw.WriteStartDocument();
 
@@ -155,7 +157,7 @@ class GenFHIR
         {
             xw.WriteStartElement("entry");
             xw.WriteStartElement("item");
-            xw.WriteAttributeString(identifiers[dataCount], output[dataCount].ToString());
+            xw.WriteAttributeString(identifiers[dataCount], String.Format("{0:0.0}", output[dataCount]) + unit[dataCount]);
             xw.WriteFullEndElement();
             xw.WriteEndElement();
         }

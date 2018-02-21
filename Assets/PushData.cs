@@ -1,6 +1,4 @@
-﻿// Sends data not yet on server to server via FTP.
-
-//TODO MAYBE Detect if server exists/allows uploads and inform the dev using Debug.Log if not
+﻿// Sends data not yet on server to server via HTTP POST.
 
 using System.IO;
 using System.Linq;
@@ -43,8 +41,13 @@ public class PushData
     void UploadCore(string fileToUpload, string host)
     {
 
+        // File check function can also be used to check if a host exists
+        if (!FileExistsAtURLCore(host))
+        {
+            Debug.Log("Host is offline or does not exist. Please check your host.");
+        }
         // Note that HTTP allows additional / characters so don't need to check final character of host
-        if (!FileExistsAtURLCore(host + "/VirZOOM-device-profile.xml"))
+        else if (!FileExistsAtURLCore(host + "/VirZOOM-device-profile.xml"))
         {
             UploadViaClient(host, DataHandler.path + "VirZOOM-device-profile.xml");
         }
@@ -110,7 +113,7 @@ public class PushData
         }
         catch
         {
-            Debug.Log("Could not detect whether certain files exist on the server. Ensure that you push the device profile.");
+            Debug.Log("Target does not exist or host does not support TLS 1.0.");
             return false;
         }
 

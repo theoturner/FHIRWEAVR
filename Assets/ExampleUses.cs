@@ -21,17 +21,21 @@ public class ExampleUses : MonoBehaviour
     void Update()
     {
 
-        //Debug.Log(DateTimeFormats.GetDT("full"));
         //Debug.Log(myDataInstance.GetMetric("rotation", "current"));
-        /*
+
+        /* REMOVE FROM FINAL FILE *******************************
         if (Time.frameCount == 100)
         {
-            //myDataInstance.DisplayMetric("resistance", "current", 5);
-            //GenFHIR.Document("session");
-            //Debug.Log(DataHandler.path);
-            //myUploaderInstance.Upload("last", "http://ptsv2.com/t/VirZOOM/post");
-            //myUploaderInstance.ManualUpload("VirZOOM-output-02-08-16h18m02s.xml", DataHandler.path, "http://ptsv2.com/t/VirZOOM/post");
-            //myUploaderInstance.FileExistsAtURL("http://ptsv2.com/t/VirZOOM/post/VirZOOM-device-profile.xml");
+            myUploaderInstance.FileExistsAtURL("https://httpbin.org/status/200");
+        }
+        */
+
+        /*
+        if (Time.frameCount == 600)
+        {
+            myDataInstance.DisplayAllData("session", 10);
+            GenFHIR.Document("session");
+            myUploaderInstance.Upload("last", "http://ptsv2.com/t/VirZOOM/post");
         }
         */
 

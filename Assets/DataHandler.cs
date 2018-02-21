@@ -1,6 +1,7 @@
 ﻿// Scripts for getting both current and session metrics and datasets.
 // N.B. while it may seem sensible to keep current and session arrays class-wide, GenFHIR cannot create documents in time.
 
+using System;
 using System.Collections;
 using System.Globalization;
 using UnityEngine;
@@ -179,6 +180,7 @@ public class DataHandler : MonoBehaviour
     {
 
         string[] descriptors = { "Distance: ", "Speed: ", "Resistance: ", "Heartrate: ", "Rotation: ", "Lean: ", "Incline: " };
+        string[] units = { " km", " m/s", "", " bpm", " rad", " m", " m" };
         // Type handling done in GetAllData
         double[] allData = GetAllData(type);
         int dataCount;
@@ -186,7 +188,7 @@ public class DataHandler : MonoBehaviour
 
         for (dataCount = 0; dataCount < 7; dataCount++)
         {
-            spatialUIText = spatialUIText + descriptors[dataCount] + allData[dataCount] + "\n";
+            spatialUIText = spatialUIText + descriptors[dataCount] + String.Format("{0:0.0}", allData[dataCount]) + units[dataCount] + "\n";
         }
         FHIRHUD.text = spatialUIText;
         if (duration != 0)
@@ -199,11 +201,35 @@ public class DataHandler : MonoBehaviour
     public void DisplayMetric(string metric, string type, double duration)
     {
 
+        
         // Type handling done in GetMetric
         double metricData = GetMetric(metric, type);
         spatialUIText = type.ToUpper() + " READING\n";
 
-        FHIRHUD.text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(metric) + ": " + metricData;
+        string unit = "";
+        if (metric == "distance")
+        {
+            unit = " km";
+        }
+        else if (metric == "speed")
+        {
+            unit = " m/s";
+        }
+        else if (metric == "heartrate")
+        {
+            unit = " bpm";
+        }
+        else if (metric == "rotation")
+        {
+            unit = " rad";
+        }
+        else if (metric == "lean" || metric == "incline")
+        {
+            unit = " m";
+        }
+        // Keep unit == "" (default) if metric is resistance or nonexistent metric entered - no statement necessary
+
+        FHIRHUD.text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(metric) + ": " + String.Format("{0:0.0}", metricData) + unit;
         if (duration != 0)
         {
             StartCoroutine(HideAfterDuration(duration));
