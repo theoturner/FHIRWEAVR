@@ -175,8 +175,8 @@ public class DataHandler : MonoBehaviour
     }
 
 
-
-    public void DisplayAllData(string type, double duration)
+    // Optional parameter for hiding displayed data after a certain period of time
+    public void DisplayAllData(string type, double duration = 0)
     {
 
         string[] descriptors = { "Distance: ", "Speed: ", "Resistance: ", "Heartrate: ", "Rotation: ", "Lean: ", "Incline: " };
@@ -198,10 +198,9 @@ public class DataHandler : MonoBehaviour
 
     }
 
-    public void DisplayMetric(string metric, string type, double duration)
+    public void DisplayMetric(string metric, string type, double duration = 0)
     {
 
-        
         // Type handling done in GetMetric
         double metricData = GetMetric(metric, type);
         spatialUIText = type.ToUpper() + " READING\n";
@@ -241,6 +240,22 @@ public class DataHandler : MonoBehaviour
     {
 
         FHIRHUD.text = "";
+
+    }
+
+    public void StartSession()
+    {
+
+        GenFHIR.Device();
+        Debug.Log("FHIRWEAVR session started.");
+
+    }
+
+    public void EndSession()
+    {
+
+        GenFHIR.Device(0);
+        Debug.Log("FHIRWEAVR session ended.");
 
     }
 

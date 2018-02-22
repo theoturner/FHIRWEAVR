@@ -5,14 +5,12 @@ using System.IO;
 using System.Xml;
 
 //TODO Verify with a FHIR team member that you have all required elements
-//TODO for documentation: document manual initial creation of device profile, will be created on document creation if does not exist.
-//TODO Device(): read and change to inactive if device disconnected
-//TODO MAYBE Find out how to overwrite old XML entries for continuously updating (current) metrics
 
 class GenFHIR
 {
 
-    public static void Device()
+    // Optionl parameter used for closing connections after sessions to ensure VirZOOM is registered as inactive
+    public static void Device(int connected = 1)
     {
 
         XmlWriter xw = XmlWriter.Create(DataHandler.path + "VirZOOM-device-profile.xml");
@@ -26,7 +24,14 @@ class GenFHIR
         xw.WriteFullEndElement();
 
         xw.WriteStartElement("status");
-        xw.WriteAttributeString("value", "active"); //TODO read and change to inactive if device disconnected
+        if (connected == 1)
+        {
+            xw.WriteAttributeString("value", "active");
+        }
+        else
+        {
+            xw.WriteAttributeString("value", "inactive");
+        }
         xw.WriteFullEndElement();
 
         xw.WriteStartElement("type");
@@ -58,9 +63,11 @@ class GenFHIR
 
     }
 
-    public static void Document(string type)
+    public static void Document(string type, string overwriteName = "")
     {
 
+        // In case of forgetting to use StartSession(), a forced creation of the device profile.
+        // Forgetting to use the function means device active status can be registered incorrectly.
         if (!(File.Exists(DataHandler.path + "VirZOOM-device-profile.xml")))
         {
             Device();
@@ -73,7 +80,17 @@ class GenFHIR
         string dateTime = DateTimeFormats.GetDT("full");
         string fileDateTime = DateTimeFormats.GetDT("filename");
 
-        XmlWriter xw = XmlWriter.Create(DataHandler.path + "VirZOOM-output-" + fileDateTime + ".xml");
+        string fullFilePath = DataHandler.path;
+        if (overwriteName == "")
+        {
+            fullFilePath += "VirZOOM-output-" + fileDateTime;
+        }
+        else
+        {
+            fullFilePath += overwriteName;
+        }
+        fullFilePath += ".xml";
+        XmlWriter xw = XmlWriter.Create(fullFilePath);
         int dataCount;
         string[] identifiers = { "distance", "speed", "resistance", "heartrate", "rotation", "lean", "incline" };
         string[] unit = { " km", " m/s", "", " bpm", " rad", " m", " m" };

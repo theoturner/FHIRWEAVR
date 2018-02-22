@@ -13,6 +13,7 @@ public class ExampleUses : MonoBehaviour
 
         // You must must add this in Start().
         myDataInstance = DataHandler.Instance;
+        myDataInstance.StartSession();
 
     }
 
@@ -26,7 +27,8 @@ public class ExampleUses : MonoBehaviour
         /* REMOVE FROM FINAL FILE *******************************
         if (Time.frameCount == 100)
         {
-            myUploaderInstance.FileExistsAtURL("https://httpbin.org/status/200");
+            //myUploaderInstance.Upload("last", "http://ptsv2.com/t/VirZOOM/post");
+            //myUploaderInstance.FileExistsAtURL("https://httpbin.org/status/200");
         }
         */
 
@@ -35,7 +37,9 @@ public class ExampleUses : MonoBehaviour
         {
             myDataInstance.DisplayAllData("session", 10);
             GenFHIR.Document("session");
+            GenFHIR.Document("current", "VirZOOM-updatable-output");
             myUploaderInstance.Upload("last", "http://ptsv2.com/t/VirZOOM/post");
+            myDataInstance.EndSession();
         }
         */
 

@@ -44,7 +44,7 @@ public class PushData
         // File check function can also be used to check if a host exists
         if (!FileExistsAtURLCore(host))
         {
-            Debug.Log("Host is offline or does not exist. Please check your host.");
+            Debug.Log("Host is offline or does not support TLS 1.0.");
         }
         // Note that HTTP allows additional / characters so don't need to check final character of host
         else if (!FileExistsAtURLCore(host + "/VirZOOM-device-profile.xml"))
@@ -113,7 +113,7 @@ public class PushData
         }
         catch
         {
-            Debug.Log("Target does not exist or host does not support TLS 1.0.");
+            Debug.Log("Could not read server status.");
             return false;
         }
 
