@@ -221,46 +221,26 @@ Prefab:
       propertyPath: Camera
       value: 
       objectReference: {fileID: 1770854970}
-    - target: {fileID: 1000012637726108, guid: 3820ddc41bffb9d47ab34f161e54123e, type: 2}
-      propertyPath: m_Name
-      value: FHIRHUD
+    - target: {fileID: 4000013233178894, guid: 3820ddc41bffb9d47ab34f161e54123e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013233178894, guid: 3820ddc41bffb9d47ab34f161e54123e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013233178894, guid: 3820ddc41bffb9d47ab34f161e54123e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 102000013750504474, guid: 3820ddc41bffb9d47ab34f161e54123e,
         type: 2}
       propertyPath: m_Text
-      value: 'HUD NOT LOADED.
+      value: 'THE HUD WILL APPEAR HERE.
 
-        PLEASE CHECK FHIRHUD PREFAB COMPONENTS.'
+        REPOSITION AS REQUIRED.'
       objectReference: {fileID: 0}
-    - target: {fileID: 102000013750504474, guid: 3820ddc41bffb9d47ab34f161e54123e,
-        type: 2}
-      propertyPath: m_FontSize
-      value: 28
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013233178894, guid: 3820ddc41bffb9d47ab34f161e54123e, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.87
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013233178894, guid: 3820ddc41bffb9d47ab34f161e54123e, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 1.44
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013233178894, guid: 3820ddc41bffb9d47ab34f161e54123e, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 102000013750504474, guid: 3820ddc41bffb9d47ab34f161e54123e,
-        type: 2}
-      propertyPath: m_Alignment
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 102000013750504474, guid: 3820ddc41bffb9d47ab34f161e54123e,
-        type: 2}
-      propertyPath: m_LineSpacing
-      value: 1.2
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114000011940784660, guid: 3820ddc41bffb9d47ab34f161e54123e, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3820ddc41bffb9d47ab34f161e54123e, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &475822364
@@ -275,7 +255,7 @@ GameObject:
   - component: {fileID: 475822366}
   - component: {fileID: 475822365}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -349,32 +329,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &677584804 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 100932, guid: 3820ddc41bffb9d47ab34f161e54123e, type: 2}
-  m_PrefabInternal: {fileID: 442740516}
---- !u!114 &677584806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 677584804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 967474099115e6a40814cef41b4b0101, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &677584809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 677584804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba6a4b34e2ebd9d4f98d393492b421ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1770854965
 GameObject:
   m_ObjectHideFlags: 0
