@@ -283,9 +283,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\DataHandler.cs" />
-    <Compile Include="Assets\DateTimeFormats.cs" />
+    <Compile Include="Assets\dateTimeFormats.cs" />
     <Compile Include="Assets\ExampleUses.cs" />
-    <Compile Include="Assets\GenFHIR.cs" />
+    <Compile Include="Assets\genFHIR.cs" />
     <Compile Include="Assets\PushData.cs" />
     <Compile Include="Assets\VZ\Scripts\core\VZColliderInfo.cs" />
     <Compile Include="Assets\VZ\Scripts\core\VZController.cs" />
