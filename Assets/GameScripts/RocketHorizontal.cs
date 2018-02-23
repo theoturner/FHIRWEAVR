@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rocket : MonoBehaviour
+public class RocketHorizontal : MonoBehaviour
 {
 
     Vector3 location;
     DataHandler myDataInstance;
+    System.Random random = new System.Random();
 
     void Start()
     {
@@ -18,7 +19,15 @@ public class Rocket : MonoBehaviour
 
     void Update()
     {
-        location.z += (float)-0.05;
+        if (location.x >= 5)
+        {
+            if (random.Next(0, 1) == 0)
+            {
+                location.z *= -1;
+            }
+            location.x -= 30;
+        }
+        location.x += (float)0.01;
         //location.x = -100 * (float)myDataInstance.GetMetric("lean", "current");
         //location.y = 100 * (float)myDataInstance.GetMetric("incline", "current") + 15;
         transform.position = location;
