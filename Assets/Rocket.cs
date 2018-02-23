@@ -30,7 +30,7 @@ public class Rocket : MonoBehaviour
     {
         if (col.gameObject.tag == "VZPlayer")
         {
-            Physics.IgnoreCollision(col.gameObject.GetComponent<Collider>(), collider);
+            Physics.IgnoreCollision(col.gameObject.GetComponent<Collider>(), GetComponent<Collider>());
         }
 
         if (col.gameObject.name == "Camera")
