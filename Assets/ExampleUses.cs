@@ -21,17 +21,17 @@ public class ExampleUses : MonoBehaviour
     // Example uses of FHIRWEAVR are included.
     void Update()
     {
-
+        myDataInstance.DisplayAllData("current");
         //Debug.Log(myDataInstance.GetMetric("rotation", "current"));
 
-        // REMOVE FROM FINAL FILE *******************************
+        /* REMOVE FROM FINAL FILE *******************************
         if (Time.frameCount == 100)
         {
-            myDataInstance.DisplayAllData("current", 3);
+            //myDataInstance.DisplayAllData("current", 3);
             //myUploaderInstance.Upload("last", "http://ptsv2.com/t/VirZOOM/post");
             //myUploaderInstance.FileExistsAtURL("https://httpbin.org/status/200");
         }
-        
+        /*
 
         /*
         if (Time.frameCount == 600)

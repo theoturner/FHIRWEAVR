@@ -287,6 +287,7 @@
     <Compile Include="Assets\ExampleUses.cs" />
     <Compile Include="Assets\genFHIR.cs" />
     <Compile Include="Assets\PushData.cs" />
+    <Compile Include="Assets\Rocket.cs" />
     <Compile Include="Assets\VZ\Scripts\core\VZColliderInfo.cs" />
     <Compile Include="Assets\VZ\Scripts\core\VZController.cs" />
     <Compile Include="Assets\VZ\Scripts\core\VZControllerMap.cs" />
