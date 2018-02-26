@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿/*
+using UnityEngine;
 
 public class ExampleUses : MonoBehaviour
 {
@@ -22,18 +23,7 @@ public class ExampleUses : MonoBehaviour
     void Update()
     {
         myDataInstance.DisplayAllData("current");
-        //Debug.Log(myDataInstance.GetMetric("rotation", "current"));
-
-        /* REMOVE FROM FINAL FILE *******************************
-        if (Time.frameCount == 100)
-        {
-            //myDataInstance.DisplayAllData("current", 3);
-            //myUploaderInstance.Upload("last", "http://ptsv2.com/t/VirZOOM/post");
-            //myUploaderInstance.FileExistsAtURL("https://httpbin.org/status/200");
-        }
-        /*
-
-        /*
+        Debug.Log(myDataInstance.GetMetric("rotation", "current"));
         if (Time.frameCount == 600)
         {
             myDataInstance.DisplayAllData("session", 10);
@@ -42,7 +32,7 @@ public class ExampleUses : MonoBehaviour
             myUploaderInstance.Upload("last", "http://ptsv2.com/t/VirZOOM/post");
             myDataInstance.EndSession();
         }
-        */
 
     }
 }
+*/

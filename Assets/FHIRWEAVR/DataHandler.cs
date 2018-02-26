@@ -176,7 +176,7 @@ public class DataHandler : MonoBehaviour
 
 
     // Optional parameter for hiding displayed data after a certain period of time
-    public void DisplayAllData(string type, double duration = 0)
+    public void DisplayAllData(string type, double duration = 0, string additionalText = "")
     {
 
         string[] descriptors = { "Distance: ", "Speed: ", "Resistance: ", "Heartrate: ", "Rotation: ", "Lean: ", "Incline: " };
@@ -190,7 +190,7 @@ public class DataHandler : MonoBehaviour
         {
             spatialUIText = spatialUIText + descriptors[dataCount] + String.Format("{0:0.0}", allData[dataCount]) + units[dataCount] + "\n";
         }
-        FHIRHUD.text = spatialUIText;
+        FHIRHUD.text = spatialUIText + additionalText; ;
         if (duration != 0)
         {
             StartCoroutine(HideAfterDuration(duration));
@@ -198,7 +198,7 @@ public class DataHandler : MonoBehaviour
 
     }
 
-    public void DisplayMetric(string metric, string type, double duration = 0)
+    public void DisplayMetric(string metric, string type, double duration = 0, string additionalText = "")
     {
 
         // Type handling done in GetMetric
@@ -228,7 +228,7 @@ public class DataHandler : MonoBehaviour
         }
         // Keep unit == "" (default) if metric is resistance or nonexistent metric entered - no statement necessary
 
-        FHIRHUD.text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(metric) + ": " + String.Format("{0:0.0}", metricData) + unit;
+        FHIRHUD.text = spatialUIText + CultureInfo.CurrentCulture.TextInfo.ToTitleCase(metric) + ": " + String.Format("{0:0.0}", metricData) + unit + "\n" + additionalText;
         if (duration != 0)
         {
             StartCoroutine(HideAfterDuration(duration));

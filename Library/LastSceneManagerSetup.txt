@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/VZ/Scenes/test.unity
+- path: Assets/VirZOOMCore/VZ/Scenes/test.unity
   isLoaded: 1
   isActive: 1

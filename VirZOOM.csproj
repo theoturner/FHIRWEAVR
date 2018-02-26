@@ -282,27 +282,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\DataHandler.cs" />
-    <Compile Include="Assets\dateTimeFormats.cs" />
-    <Compile Include="Assets\ExampleUses.cs" />
-    <Compile Include="Assets\GameScripts\Rocket.cs" />
-    <Compile Include="Assets\GameScripts\RocketHorizontal.cs" />
-    <Compile Include="Assets\genFHIR.cs" />
-    <Compile Include="Assets\PushData.cs" />
-    <Compile Include="Assets\VZ\Scripts\core\VZColliderInfo.cs" />
-    <Compile Include="Assets\VZ\Scripts\core\VZController.cs" />
-    <Compile Include="Assets\VZ\Scripts\core\VZControllerMap.cs" />
-    <Compile Include="Assets\VZ\Scripts\core\VZPlayer.cs" />
-    <Compile Include="Assets\VZ\Scripts\core\VZPlugin.cs" />
-    <Compile Include="Assets\VZ\Scripts\test\VZBikeAnim.cs" />
-    <Compile Include="Assets\VZ\Scripts\test\VZBikeTest.cs" />
+    <Compile Include="Assets\DemoGame\GameScripts\Player.cs" />
+    <Compile Include="Assets\DemoGame\GameScripts\Rocket.cs" />
+    <Compile Include="Assets\FHIRWEAVR\DataHandler.cs" />
+    <Compile Include="Assets\FHIRWEAVR\dateTimeFormats.cs" />
+    <Compile Include="Assets\FHIRWEAVR\ExampleUses.cs" />
+    <Compile Include="Assets\FHIRWEAVR\genFHIR.cs" />
+    <Compile Include="Assets\FHIRWEAVR\PushData.cs" />
+    <Compile Include="Assets\VirZOOMCore\VZ\Scripts\core\VZColliderInfo.cs" />
+    <Compile Include="Assets\VirZOOMCore\VZ\Scripts\core\VZController.cs" />
+    <Compile Include="Assets\VirZOOMCore\VZ\Scripts\core\VZControllerMap.cs" />
+    <Compile Include="Assets\VirZOOMCore\VZ\Scripts\core\VZPlayer.cs" />
+    <Compile Include="Assets\VirZOOMCore\VZ\Scripts\core\VZPlugin.cs" />
+    <Compile Include="Assets\VirZOOMCore\VZ\Scripts\test\VZBikeAnim.cs" />
+    <Compile Include="Assets\VirZOOMCore\VZ\Scripts\test\VZBikeTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
-    <None Include="Assets\VZ\README.txt" />
-    <None Include="Assets\VZ\Resources\VZControllerMap.xml" />
-    <None Include="Assets\VZ\Shaders\NoZ.shader" />
-    <None Include="Assets\VZ\Shaders\NoZFont.shader" />
+    <None Include="Assets\VirZOOMCore\Plugins\Android\AndroidManifest.xml" />
+    <None Include="Assets\VirZOOMCore\VZ\README.txt" />
+    <None Include="Assets\VirZOOMCore\VZ\Resources\VZControllerMap.xml" />
+    <None Include="Assets\VirZOOMCore\VZ\Shaders\NoZ.shader" />
+    <None Include="Assets\VirZOOMCore\VZ\Shaders\NoZFont.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
