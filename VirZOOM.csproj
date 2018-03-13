@@ -289,6 +289,8 @@
     <Compile Include="Assets\FHIRWEAVR\ExampleUses.cs" />
     <Compile Include="Assets\FHIRWEAVR\genFHIR.cs" />
     <Compile Include="Assets\FHIRWEAVR\PushData.cs" />
+    <Compile Include="Assets\GrassRoadRace\Script\CameraMove.cs" />
+    <Compile Include="Assets\Track.cs" />
     <Compile Include="Assets\VirZOOMCore\VZ\Scripts\core\VZColliderInfo.cs" />
     <Compile Include="Assets\VirZOOMCore\VZ\Scripts\core\VZController.cs" />
     <Compile Include="Assets\VirZOOMCore\VZ\Scripts\core\VZControllerMap.cs" />
