@@ -282,15 +282,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\DemoGame\GameScripts\Ocean.cs" />
     <Compile Include="Assets\DemoGame\GameScripts\Player.cs" />
     <Compile Include="Assets\DemoGame\GameScripts\Rocket.cs" />
+    <Compile Include="Assets\DemoGame\GameScripts\Track.cs" />
+    <Compile Include="Assets\DemoGame\GrassRoadRace\Script\CameraMove.cs" />
     <Compile Include="Assets\FHIRWEAVR\DataHandler.cs" />
     <Compile Include="Assets\FHIRWEAVR\dateTimeFormats.cs" />
     <Compile Include="Assets\FHIRWEAVR\ExampleUses.cs" />
     <Compile Include="Assets\FHIRWEAVR\genFHIR.cs" />
     <Compile Include="Assets\FHIRWEAVR\PushData.cs" />
-    <Compile Include="Assets\GrassRoadRace\Script\CameraMove.cs" />
-    <Compile Include="Assets\Track.cs" />
     <Compile Include="Assets\VirZOOMCore\VZ\Scripts\core\VZColliderInfo.cs" />
     <Compile Include="Assets\VirZOOMCore\VZ\Scripts\core\VZController.cs" />
     <Compile Include="Assets\VirZOOMCore\VZ\Scripts\core\VZControllerMap.cs" />
@@ -300,7 +301,6 @@
     <Compile Include="Assets\VirZOOMCore\VZ\Scripts\test\VZBikeTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Paper Environment Pack vol. 1\ReadMe.txt" />
     <None Include="Assets\VirZOOMCore\Plugins\Android\AndroidManifest.xml" />
     <None Include="Assets\VirZOOMCore\VZ\README.txt" />
     <None Include="Assets\VirZOOMCore\VZ\Resources\VZControllerMap.xml" />
