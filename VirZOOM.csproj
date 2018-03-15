@@ -283,6 +283,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\DemoGame\GameScripts\Ocean.cs" />
+    <Compile Include="Assets\DemoGame\GameScripts\Palm.cs" />
     <Compile Include="Assets\DemoGame\GameScripts\Player.cs" />
     <Compile Include="Assets\DemoGame\GameScripts\Rocket.cs" />
     <Compile Include="Assets\DemoGame\GameScripts\Track.cs" />

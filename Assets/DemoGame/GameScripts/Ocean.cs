@@ -15,12 +15,12 @@ public class Ocean : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
 
-        //speedMultiplier = data.GetMetric("speed", "current") / 2;
-        speedMultiplier = 2; // REMOVE THIS TEST STATEMENT ****************************************************
+        //speedMultiplier = data.GetMetric("speed", "current");
+        // Move ocean at twice the speed of everything else, creates 'fish-eye' sense of speed
+        speedMultiplier = 10; // REMOVE THIS TEST STATEMENT ****************************************************
 
         if (location.z <= -187)
         {

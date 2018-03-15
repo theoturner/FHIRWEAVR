@@ -15,11 +15,10 @@ public class Track : MonoBehaviour {
 
     }
 	
-	// Update is called once per frame
 	void Update () {
 
         //speedMultiplier = data.GetMetric("speed", "current") / 2;
-        speedMultiplier = 2; // REMOVE THIS TEST STATEMENT ****************************************************
+        speedMultiplier = 5; // REMOVE THIS TEST STATEMENT ****************************************************
 
         if (location.z <= -68.58)
         {

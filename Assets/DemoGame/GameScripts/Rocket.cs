@@ -21,7 +21,7 @@ public class Rocket : MonoBehaviour
     {
 
         //speedMultiplier = data.GetMetric("speed", "current") / 2;
-        speedMultiplier = 2; // REMOVE THIS TEST STATEMENT ****************************************************
+        speedMultiplier = 5; // REMOVE THIS TEST STATEMENT ****************************************************
         if (location.z <= -0.6)
         {
             if (collisionTrigger == 0 && incrementTrigger == 0)
