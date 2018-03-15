@@ -49,7 +49,7 @@ public class Palm : MonoBehaviour
 
             }
             // Random height in acceptable range
-            location.y = (float)random.Next(-18, -10) / 10;
+            location.y = (float)random.Next(-18, -6) / 10;
 
             // Random z-positon in acceptable range
             location.z += (float)random.Next(-32, 33) / 10;

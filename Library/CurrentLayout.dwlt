@@ -253,8 +253,8 @@ MonoBehaviour:
     y: 0
     width: 1024
     height: 566
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -360,19 +360,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/VirZOOMCore/VZ/Scenes
+    - Assets/DemoGame/GameScripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/VirZOOMCore/VZ/Scenes
+  - Assets/DemoGame/GameScripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Theo\Documents\VirZOOM
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: d6270000
-    m_LastClickedID: 10198
-    m_ExpandedIDs: 00000000d0270000e627000064280000102900003e290000ec2900006e2c0000702c0000722c0000742c0000762c0000782c00007a2c00007c2c000000ca9a3bffffff7f
+    m_SelectedIDs: da290000
+    m_LastClickedID: 10714
+    m_ExpandedIDs: 00000000ca270000e02700005e2800000a29000038290000e62900005c2d00005e2d0000602d0000622d0000642d0000662d0000682d00006a2d000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -400,7 +400,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000d0270000e627000064280000102900003e290000ec2900006e2c0000702c0000722c0000742c0000762c0000782c00007a2c00007c2c0000
+    m_ExpandedIDs: 00000000ca270000e02700005e2800000a29000038290000e62900005c2d00005e2d0000602d0000622d0000642d0000662d0000682d00006a2d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -518,23 +518,23 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
+    m_SelectedIDs: be070000
     m_LastClickedID: 0
-    m_ExpandedIDs: 3a5df7ff686cf7ff98fbffff00000000c48f0000
+    m_ExpandedIDs: 9efbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Camera
-      m_OriginalName: Camera
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 39406
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 4}
     m_SearchString: 
@@ -604,7 +604,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0, y: -0.7071068, z: -0, w: 0.7071068}
     speed: 2
-    m_Value: {x: 0, y: -0.70710677, z: 0, w: 0.70710677}
+    m_Value: {x: -0, y: 0.7071068, z: 0, w: -0.7071068}
   m_Size:
     m_Target: 52.45178
     speed: 2
