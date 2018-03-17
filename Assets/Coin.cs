@@ -6,13 +6,14 @@
 
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour
+public class Coin : MonoBehaviour
 {
 
     DataHandler data;
     Vector3 location;
     double speedMultiplier;
     float randomScale;
+    int rotation;
     int collisionTrigger;
 
     void Start()
@@ -29,24 +30,20 @@ public class Obstacle : MonoBehaviour
         //speedMultiplier = data.GetMetric("speed", "current") / 2;
         speedMultiplier = 5; // REMOVE THIS TEST STATEMENT ****************************************************
 
-        if (location.z <= -72.39)
+        if (location.z <= -76.2)
         {
 
             // Need a new random seed any time we want to respawn the obstacle
             // Note the need to use ranom.Next(i, j + 1) for a random integer between i and j
             System.Random random = new System.Random();
 
-            // Random scale in acceptable range
-            randomScale = (float)random.Next(8, 11) / 10;
-            transform.localScale = new Vector3(randomScale, randomScale, randomScale);
-
             // Random left/right position on track in acceptable range 
-            location.x = (float)random.Next(-13, 14) / 10;
+            location.x = (float)random.Next(-16, 17) / 10;
 
             // Random z-positon in acceptable range (define relative to the center of each track piece)
             location.z += (float)random.Next(-1, 2) / 10;
 
-            // Move obstacles forward at end of conveyor belt
+            // Move coins forward at end of conveyor belt
             location.z += (float)152.4;
 
             collisionTrigger = 0;
@@ -54,6 +51,9 @@ public class Obstacle : MonoBehaviour
         }
 
         location.z += (float)(-0.01 * speedMultiplier);
+
+        // Rotate continually
+        transform.Rotate(0, 360 * Time.deltaTime, 0, Space.World);
 
         // Update location after all calculations done
         transform.position = location;
@@ -75,10 +75,10 @@ public class Obstacle : MonoBehaviour
             collisionTrigger = 1;
             if (Player.score != 0)
             {
-                Player.score--;
+                Player.score++;
             }
             // TODO FLASH SCREEN RED
-            Debug.Log("Collision!");
+            Debug.Log("Coin!");
         }
 
     }
