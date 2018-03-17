@@ -1,4 +1,8 @@
-﻿// TODO Consolidate all moving object scripts into this file
+﻿//TODO Add the following to notes
+// Ignore bike hitbox - testing shows users perceive the boke is always directly under their view, regardless of leaning
+// As frames are not infinite per second, we don't have strictly continuous data, to check for an object passing a point,
+//      we have to check for a certain range of positions. If a frame is rendered when the world model says the object is
+//      in that range, the result is true.
 
 using UnityEngine;
 
@@ -9,7 +13,7 @@ public class Obstacle : MonoBehaviour
     Vector3 location;
     double speedMultiplier;
     float randomScale;
-    int collisionTrigger, incrementTrigger;
+    int collisionTrigger;
 
     void Start()
     {
@@ -25,19 +29,10 @@ public class Obstacle : MonoBehaviour
         //speedMultiplier = data.GetMetric("speed", "current") / 2;
         speedMultiplier = 5; // REMOVE THIS TEST STATEMENT ****************************************************
 
-        if (location.z <= -0.6)
-        {
-            if (collisionTrigger == 0 && incrementTrigger == 0)
-            {
-                Player.score++;
-                incrementTrigger = 1;
-            }
-        }
-
         if (location.z <= -72.39)
         {
 
-            // Need a new random seed any time we want to respawn the tree
+            // Need a new random seed any time we want to respawn the obstacle
             // Note the need to use ranom.Next(i, j + 1) for a random integer between i and j
             System.Random random = new System.Random();
 
@@ -54,7 +49,7 @@ public class Obstacle : MonoBehaviour
             // Move trees forward at end of conveyor belt
             location.z += (float)152.4;
 
-            incrementTrigger = 0;
+            
             collisionTrigger = 0;
 
         }
@@ -70,12 +65,13 @@ public class Obstacle : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
 
+        // Ignore bike hitbox, testing shows users perceive the bike is always directly under their view, regardless of leaning
         if (collision.gameObject.tag == "VZPlayer")
         {
             Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), GetComponent<Collider>());
         }
 
-        if (collision.gameObject.name == "Camera")
+        if (collision.gameObject.name == "Camera" && collisionTrigger == 0)
         {
             collisionTrigger = 1;
             if (Player.score != 0)
