@@ -5,6 +5,7 @@
 //      in that range, the result is true.
 // Bounce user off edge of track to clearly demonstrate the barrier. Continued leaning against the edge 'shakes' the
 //      camera, like rumble strips
+// Start moving left/right above a certain degree of leaning to account for minor head movements
 
 using UnityEngine;
 
@@ -49,7 +50,7 @@ public class Obstacle : MonoBehaviour
             location.z += (float)random.Next(-1, 2) / 10;
 
             // Move obstacles forward at end of conveyor belt
-            location.z += (float)152.4;
+            location.z += 152.4f;
 
             collisionTrigger = 0;
 
