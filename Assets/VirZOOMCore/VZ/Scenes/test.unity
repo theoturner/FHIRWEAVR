@@ -931,8 +931,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 223446860}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.49747643, y: 1.0399956, z: 1.1962459}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.49747643, y: 1.1199956, z: 1.1962459}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 589775376}
@@ -947,8 +947,8 @@ Transform:
   - {fileID: 629040583}
   - {fileID: 1947139560}
   - {fileID: 2129364936}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 1601775765}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &266335583 stripped
 GameObject:
@@ -1028,7 +1028,7 @@ Transform:
   - {fileID: 957941917}
   - {fileID: 1064810794}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &306080829
 Prefab:
@@ -2785,7 +2785,7 @@ Transform:
   - {fileID: 915480040}
   - {fileID: 2066072465}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &767158979
 GameObject:
@@ -4443,7 +4443,7 @@ Transform:
   - {fileID: 692863570}
   - {fileID: 1744684811}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1358376589 stripped
 GameObject:
@@ -5610,6 +5610,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5de095b122d8bb54793ee30e491bce36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1601775765 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 410100, guid: 3820ddc41bffb9d47ab34f161e54123e, type: 2}
+  m_PrefabInternal: {fileID: 442740516}
 --- !u!1 &1637313270 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 193874, guid: 1731ae0548ad2ba458c572ab6df7b58c, type: 2}
@@ -5849,7 +5853,7 @@ Transform:
   - {fileID: 1244716120}
   - {fileID: 1672341495}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1666392139
 GameObject:
@@ -5897,7 +5901,7 @@ Transform:
   - {fileID: 637090383}
   - {fileID: 694159027}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1669410928 stripped
 GameObject:

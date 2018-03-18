@@ -3,6 +3,8 @@
 // As frames are not infinite per second, we don't have strictly continuous data, to check for an object passing a point,
 //      we have to check for a certain range of positions. If a frame is rendered when the world model says the object is
 //      in that range, the result is true.
+// Bounce user off edge of track to clearly demonstrate the barrier. Continued leaning against the edge 'shakes' the
+//      camera, like rumble strips
 
 using UnityEngine;
 
