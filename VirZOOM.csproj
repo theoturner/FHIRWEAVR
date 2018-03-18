@@ -282,13 +282,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\DemoGame\GameScripts\Coin.cs" />
-    <Compile Include="Assets\DemoGame\GameScripts\Obstacle.cs" />
-    <Compile Include="Assets\DemoGame\GameScripts\Ocean.cs" />
-    <Compile Include="Assets\DemoGame\GameScripts\Palm.cs" />
-    <Compile Include="Assets\DemoGame\GameScripts\Player.cs" />
-    <Compile Include="Assets\DemoGame\GameScripts\Track.cs" />
-    <Compile Include="Assets\DemoGame\GrassRoadRace\Script\CameraMove.cs" />
+    <Compile Include="Assets\DemoGame\Scripts\Coin.cs" />
+    <Compile Include="Assets\DemoGame\Scripts\Obstacle.cs" />
+    <Compile Include="Assets\DemoGame\Scripts\Ocean.cs" />
+    <Compile Include="Assets\DemoGame\Scripts\Palm.cs" />
+    <Compile Include="Assets\DemoGame\Scripts\Player.cs" />
+    <Compile Include="Assets\DemoGame\Scripts\Track.cs" />
     <Compile Include="Assets\FHIRWEAVR\DataHandler.cs" />
     <Compile Include="Assets\FHIRWEAVR\dateTimeFormats.cs" />
     <Compile Include="Assets\FHIRWEAVR\ExampleUses.cs" />
