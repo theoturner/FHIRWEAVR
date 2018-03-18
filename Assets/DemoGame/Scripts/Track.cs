@@ -2,7 +2,8 @@
 
 using UnityEngine;
 
-public class Track : MonoBehaviour {
+public class Track : MonoBehaviour
+{
 
     DataHandler data;
     Vector3 location;

@@ -6,6 +6,7 @@
 // Bounce user off edge of track to clearly demonstrate the barrier. Continued leaning against the edge 'shakes' the
 //      camera, like rumble strips
 // Start moving left/right above a certain degree of leaning to account for minor head movements
+// Getting around thread yielding / waitforseconds due to older Csharp was tough
 
 using UnityEngine;
 
@@ -68,11 +69,6 @@ public class Obstacle : MonoBehaviour
     {
 
         // Ignore bike hitbox, testing shows users perceive the bike is always directly under their view, regardless of leaning
-        if (collision.gameObject.tag == "VZPlayer")
-        {
-            Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), GetComponent<Collider>());
-        }
-
         if (collision.gameObject.name == "Camera" && collisionTrigger == 0)
         {
             collisionTrigger = 1;

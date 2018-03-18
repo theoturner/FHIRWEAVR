@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
 
     public static int score;
 
@@ -57,4 +58,5 @@ public class Player : MonoBehaviour {
         data.DisplayMetric("heartrate", "current", additionalText: extraText + "\nScore: " + score);
 
     }
+
 }

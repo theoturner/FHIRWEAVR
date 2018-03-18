@@ -65,11 +65,6 @@ public class Coin : MonoBehaviour
     {
 
         // Ignore bike hitbox, testing shows users perceive the bike is always directly under their view, regardless of leaning
-        if (collision.gameObject.tag == "VZPlayer")
-        {
-            Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), GetComponent<Collider>());
-        }
-
         if (collision.gameObject.name == "Camera" && collisionTrigger == 0)
         {
             collisionTrigger = 1;
