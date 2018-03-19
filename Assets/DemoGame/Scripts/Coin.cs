@@ -10,16 +10,18 @@ public class Coin : MonoBehaviour
 {
 
     DataHandler data;
+    AudioSource coinSound;
     Vector3 location;
     double speedMultiplier;
     float randomScale;
     int rotation;
-    int collisionTrigger;
+    bool collisionTrigger;
 
     void Start()
     {
 
         data = DataHandler.Instance;
+        coinSound = GetComponentInParent<AudioSource>();
         location = transform.position;
 
     }
@@ -38,15 +40,15 @@ public class Coin : MonoBehaviour
             System.Random random = new System.Random();
 
             // Random left/right position on track in acceptable range 
-            location.x = (float)random.Next(-16, 17) / 10;
+            location.x = random.Next(-16, 17) / 10f;
 
             // Random z-positon in acceptable range (define relative to the center of each track piece)
-            location.z += (float)random.Next(-1, 2) / 10;
+            location.z += random.Next(-1, 2) / 10f;
 
             // Move coins forward at end of conveyor belt
-            location.z += (float)152.4;
+            location.z += 152.4f;
 
-            collisionTrigger = 0;
+            collisionTrigger = false;
 
         }
 
@@ -64,16 +66,16 @@ public class Coin : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
 
-        // Ignore bike hitbox, testing shows users perceive the bike is always directly under their view, regardless of leaning
-        if (collision.gameObject.name == "Camera" && collisionTrigger == 0)
+        // We don't use the bicycle hitbox as testing shows users perceive the bike is always directly under their view
+        // regardless of leaning. Instead we use the camera and extend the hitbox to the ground and the width of the bike.
+
+        if (collision.gameObject.name == "Camera" && collisionTrigger == false)
         {
-            collisionTrigger = 1;
-            if (Player.score != 0)
-            {
-                Player.score++;
-            }
-            // TODO FLASH SCREEN RED
-            Debug.Log("Coin!");
+
+            collisionTrigger = true;
+            coinSound.Play();
+            Player.score++;
+
         }
 
     }

@@ -1,6 +1,4 @@
-﻿// TODO Consolidate all moving object scripts into this file
-
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Track : MonoBehaviour
 {
@@ -23,7 +21,7 @@ public class Track : MonoBehaviour
 
         if (location.z <= -68.58)
         {
-            location.z += (float)152.4;
+            location.z += 152.4f;
         }
         location.z += (float)(-0.01 * speedMultiplier);
         transform.position = location;

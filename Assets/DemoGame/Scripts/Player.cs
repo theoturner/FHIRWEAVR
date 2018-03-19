@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
 
         xLean = (float)-data.GetMetric("lean", "current") / 5;
         xPosition = transform.position.x;
-        xDelta = (float)1.55 - Mathf.Abs(xPosition);
+        xDelta = 1.55f - Mathf.Abs(xPosition);
         if (Mathf.Abs(xLean) > 0.015 && Mathf.Abs(xPosition) <= 1.55)
         {
             transform.Translate(xLean, 0, 0);

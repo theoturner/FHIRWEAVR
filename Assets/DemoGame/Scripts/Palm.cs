@@ -32,14 +32,14 @@ public class Palm : MonoBehaviour
             System.Random random = new System.Random();
 
             // Random scale in acceptable range
-            randomScale = (float)random.Next(8, 16) / 10;
+            randomScale = random.Next(8, 16) / 10f;
             transform.localScale = new Vector3(randomScale, randomScale, randomScale);
 
             // Random right-angle rotation
             transform.rotation = Quaternion.Euler(0, random.Next(0, 4) * 90, 0);
 
             // Random distance from track in acceptable range 
-            location.x = (float)random.Next(31, 33) / 10;
+            location.x = random.Next(31, 33) / 10f;
 
             // Random side of track
             if (random.Next(0, 2) == 0)
@@ -49,13 +49,13 @@ public class Palm : MonoBehaviour
 
             }
             // Random height in acceptable range
-            location.y = (float)random.Next(-18, -6) / 10;
+            location.y = random.Next(-18, -6) / 10f;
 
             // Random z-positon in acceptable range
-            location.z += (float)random.Next(-32, 33) / 10;
+            location.z += random.Next(-32, 33) / 10f;
 
             // Move trees forward at end of conveyor belt
-            location.z += (float)152.4;
+            location.z += 152.4f;
 
         }
 

@@ -18,8 +18,8 @@ public class Ocean : MonoBehaviour
     void Update()
     {
 
+        // Move ocean at twice the speed of everything else, creates 'fish-eye' sense of speed
         //speedMultiplier = data.GetMetric("speed", "current");
-        // Move ocean at twice the speed of everything else (no / 2), creates 'fish-eye' sense of speed
         speedMultiplier = 10; // REMOVE THIS TEST STATEMENT ****************************************************
 
         if (location.z <= -187)
