@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/VirZOOMCore/VZ/Scenes/test.unity
+- path: Assets/VirZOOMCore/VZ/Scenes/FHIRWEAVR.unity
   isLoaded: 1
   isActive: 1

@@ -1,8 +1,9 @@
-﻿/*
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ExampleUses : MonoBehaviour
 {
+
+    /*
 
     // You must add this at the start of your MonoBehaviour class. Name the instances whatever you'd like.
     DataHandler myDataInstance;
@@ -22,17 +23,23 @@ public class ExampleUses : MonoBehaviour
     // Example uses of FHIRWEAVR are included.
     void Update()
     {
+
         myDataInstance.DisplayAllData("current");
         Debug.Log(myDataInstance.GetMetric("rotation", "current"));
+
         if (Time.frameCount == 600)
         {
+
             myDataInstance.DisplayAllData("session", 10);
             GenFHIR.Document("session");
             GenFHIR.Document("current", "VirZOOM-updatable-output");
             myUploaderInstance.Upload("last", "http://ptsv2.com/t/VirZOOM/post");
             myDataInstance.EndSession();
+
         }
 
     }
+
+    */
+
 }
-*/
