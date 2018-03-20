@@ -1,6 +1,4 @@
-﻿// TODO Consolidate all moving object scripts into this file
-
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Palm : MonoBehaviour
 {
@@ -21,8 +19,10 @@ public class Palm : MonoBehaviour
     void Update()
     {
 
+        // Uncomment this for use with the bike
         //speedMultiplier = data.GetMetric("speed", "current") / 2;
-        speedMultiplier = 5; // REMOVE THIS TEST STATEMENT ****************************************************
+        // Uncomment this for Unity Editor emulation
+        speedMultiplier = 5;
 
         if (location.z <= -72.39)
         {

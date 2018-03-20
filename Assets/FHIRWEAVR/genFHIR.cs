@@ -4,12 +4,10 @@ using System;
 using System.IO;
 using System.Xml;
 
-//TODO Verify with a FHIR team member that you have all required elements
-
 class GenFHIR
 {
 
-    // Optionl parameter used for closing connections after sessions to ensure VirZOOM is registered as inactive
+    // Optional parameter used for closing connections after sessions to ensure VirZOOM is registered as inactive
     public static void Device(int connected = 1)
     {
 
@@ -26,11 +24,15 @@ class GenFHIR
         xw.WriteStartElement("status");
         if (connected == 1)
         {
+
             xw.WriteAttributeString("value", "active");
+
         }
         else
         {
+
             xw.WriteAttributeString("value", "inactive");
+
         }
         xw.WriteFullEndElement();
 
@@ -70,30 +72,39 @@ class GenFHIR
         // Forgetting to use the function means device active status can be registered incorrectly.
         if (!(File.Exists(DataHandler.path + "VirZOOM-device-profile.xml")))
         {
+
             Device();
+
         }
 
         // Type handling done in DataHandler
         double[] output = DataHandler.Instance.GetAllData(type);
+        int dataCount;
+
+        string[] identifiers = { "distance", "speed", "resistance", "heartrate", "rotation", "lean", "incline" };
+        string[] unit = { " km", " m/s", "", " bpm", " rad", " m", " m" };
 
         // Get date/time immediately after getting data
         string dateTime = DateTimeFormats.GetDT("full");
         string fileDateTime = DateTimeFormats.GetDT("filename");
 
         string fullFilePath = DataHandler.path;
+
         if (overwriteName == "")
         {
+
             fullFilePath += "VirZOOM-output-" + fileDateTime;
+
         }
         else
         {
+
             fullFilePath += overwriteName;
+
         }
+
         fullFilePath += ".xml";
         XmlWriter xw = XmlWriter.Create(fullFilePath);
-        int dataCount;
-        string[] identifiers = { "distance", "speed", "resistance", "heartrate", "rotation", "lean", "incline" };
-        string[] unit = { " km", " m/s", "", " bpm", " rad", " m", " m" };
 
         xw.WriteStartDocument();
 
@@ -172,11 +183,13 @@ class GenFHIR
         // FHIR List entries
         for (dataCount = 0; dataCount < 7; dataCount++)
         {
+
             xw.WriteStartElement("entry");
             xw.WriteStartElement("item");
             xw.WriteAttributeString(identifiers[dataCount], String.Format("{0:0.0}", output[dataCount]) + unit[dataCount]);
             xw.WriteFullEndElement();
             xw.WriteEndElement();
+
         }
 
         xw.WriteEndElement();

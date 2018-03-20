@@ -22,8 +22,10 @@ public class Obstacle : MonoBehaviour
     void Update()
     {
 
+        // Uncomment this for use with the bike
         //speedMultiplier = data.GetMetric("speed", "current") / 2;
-        speedMultiplier = 5; // REMOVE THIS TEST STATEMENT ****************************************************
+        // Uncomment this for Unity Editor emulation
+        speedMultiplier = 5;
 
         if (location.z <= -72.39)
         {
@@ -68,6 +70,7 @@ public class Obstacle : MonoBehaviour
 
             collisionTrigger = true;
             crashSound.Play();
+
             if (Player.score != 0)
             {
 

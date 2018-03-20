@@ -1,10 +1,4 @@
-﻿//TODO Add the following to notes
-// Ignore bike hitbox - testing shows users perceive the boke is always directly under their view, regardless of leaning
-// As frames are not infinite per second, we don't have strictly continuous data, to check for an object passing a point,
-//      we have to check for a certain range of positions. If a frame is rendered when the world model says the object is
-//      in that range, the result is true.
-
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
@@ -29,8 +23,10 @@ public class Coin : MonoBehaviour
     void Update()
     {
 
+        // Uncomment this for use with the bike
         //speedMultiplier = data.GetMetric("speed", "current") / 2;
-        speedMultiplier = 5; // REMOVE THIS TEST STATEMENT ****************************************************
+        // Uncomment this for Unity Editor emulation
+        speedMultiplier = 5;
 
         if (location.z <= -76.2)
         {
@@ -74,6 +70,7 @@ public class Coin : MonoBehaviour
 
             collisionTrigger = true;
             coinSound.Play();
+
             Player.score++;
 
         }

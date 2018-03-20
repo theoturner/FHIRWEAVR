@@ -19,14 +19,19 @@ public class Ocean : MonoBehaviour
     {
 
         // Move ocean at twice the speed of everything else, creates 'fish-eye' sense of speed
+        // Uncomment this for use with the bike
         //speedMultiplier = data.GetMetric("speed", "current");
-        speedMultiplier = 10; // REMOVE THIS TEST STATEMENT ****************************************************
+        // Uncomment this for Unity Editor emulation
+        speedMultiplier = 10;
 
         if (location.z <= -187)
         {
+
             location.z += 748;
+
         }
         location.z += (float)(-0.01 * speedMultiplier);
+
         transform.position = location;
 
     }

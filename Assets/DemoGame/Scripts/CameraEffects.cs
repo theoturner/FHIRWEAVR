@@ -31,6 +31,7 @@ public class CameraEffects : MonoBehaviour
             // We use couroutines so we can yield when waiting between effect increments
             StartCoroutine(ShakeCamera());
             StartCoroutine(FlashCamera());
+
             collisionTrigger = false;
 
         }
@@ -50,7 +51,6 @@ public class CameraEffects : MonoBehaviour
         }
 
         transform.position = originalPosition;
-        //collisionTrigger = false;
 
     }
 
@@ -59,13 +59,18 @@ public class CameraEffects : MonoBehaviour
 
         for (effectGrade = 0; effectGrade < 5; effectGrade++)
         {
+
             effects.alpha = effects.alpha + 0.04f;
             yield return new WaitForSeconds(0.001f);
+
         }
+
         for (effectGrade = 0; effectGrade < 28; effectGrade++)
         {
+
             effects.alpha = effects.alpha - 0.004f;
             yield return new WaitForSeconds(0.001f);
+
         }
 
         // Frames are not infinite per second, so sometimes we don't return exactly to 0 - assign manually
