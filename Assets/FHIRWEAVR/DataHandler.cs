@@ -112,7 +112,27 @@ public class DataHandler : MonoBehaviour
 
         if (type == "current")
         {
-
+            switch (metric)
+            {
+                case "distance":
+                    return distance;
+                case "speed":
+                    return speed;
+                case "resistance":
+                    return resistance;
+                case "heartrate":
+                    return heartrate;
+                case "rotation":
+                    return rotation;
+                case "lean":
+                    return lean;
+                case "incline":
+                    return incline;
+                default:
+                    Debug.Log("That metric does not exist. Metrics are 'distance,' 'speed,' 'resistance,' 'heartrate,' 'rotation,' 'lean' and 'incline.'");
+                    return 0;
+            }
+            /*
             if (metric == "distance")
             {
 
@@ -163,6 +183,7 @@ public class DataHandler : MonoBehaviour
                 return 0;
 
             }
+            */
 
         }
         if (type == "session")
@@ -350,5 +371,24 @@ public class DataHandler : MonoBehaviour
         FHIRHUD.text = "";
 
     }
+
+
+    static bool IsMoth(string value)
+    {
+        switch (value)
+        {
+            case "Atlas Moth":
+            case "Beet Armyworm":
+            case "Indian Meal Moth":
+            case "Ash Pug":
+            case "Latticed Heath":
+            case "Ribald Wave":
+            case "The Streak":
+                return true;
+            default:
+                return false;
+        }
+    }
+
 
 }
