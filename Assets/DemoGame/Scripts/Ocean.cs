@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿// Ocean animation for 'fish-eye' sense of speed.
+
+using UnityEngine;
 
 public class Ocean : MonoBehaviour
 {
@@ -9,15 +11,12 @@ public class Ocean : MonoBehaviour
 
     void Start()
     {
-
         data = DataHandler.Instance;
         location = transform.position;
-
     }
 
     void Update()
     {
-
         // Move ocean at twice the speed of everything else, creates 'fish-eye' sense of speed
         // Uncomment this for use with the bike
         //speedMultiplier = data.GetMetric("speed", "current");
@@ -26,13 +25,11 @@ public class Ocean : MonoBehaviour
 
         if (location.z <= -187)
         {
-
             location.z += 748;
-
         }
         location.z += (float)(-0.01 * speedMultiplier);
 
         transform.position = location;
-
     }
+
 }

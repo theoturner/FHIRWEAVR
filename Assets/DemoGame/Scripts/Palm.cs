@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿// Random generation of palm trees.
+
+using UnityEngine;
 
 public class Palm : MonoBehaviour
 {
@@ -10,15 +12,12 @@ public class Palm : MonoBehaviour
 
     void Start()
     {
-
         data = DataHandler.Instance;
         location = transform.position;
-
     }
 
     void Update()
     {
-
         // Uncomment this for use with the bike
         //speedMultiplier = data.GetMetric("speed", "current") / 2;
         // Uncomment this for Unity Editor emulation
@@ -26,7 +25,6 @@ public class Palm : MonoBehaviour
 
         if (location.z <= -72.39)
         {
-
             // Need a new random seed any time we want to respawn the tree
             // Note the need to use ranom.Next(i, j + 1) for a random integer between i and j
             System.Random random = new System.Random();
@@ -44,9 +42,7 @@ public class Palm : MonoBehaviour
             // Random side of track
             if (random.Next(0, 2) == 0)
             {
-
                 location.x *= -1;
-
             }
             // Random height in acceptable range
             location.y = random.Next(-18, -6) / 10f;
@@ -56,13 +52,12 @@ public class Palm : MonoBehaviour
 
             // Move trees forward at end of conveyor belt
             location.z += 152.4f;
-
         }
 
         location.z += (float)(-0.01 * speedMultiplier);
 
         // Update location after all calculations done
         transform.position = location;
-
     }
+
 }

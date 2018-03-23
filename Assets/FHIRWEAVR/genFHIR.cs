@@ -1,4 +1,4 @@
-﻿// Scripts for generating FHIR Documents and Device Profiles.
+﻿// Generates FHIR Documents and Device Profiles.
 
 using System;
 using System.IO;
@@ -10,7 +10,6 @@ class GenFHIR
     // Optional parameter used for closing connections after sessions to ensure VirZOOM is registered as inactive
     public static void Device(int connected = 1)
     {
-
         XmlWriter xw = XmlWriter.Create(DataHandler.path + "VirZOOM-device-profile.xml");
 
         xw.WriteStartDocument();
@@ -24,15 +23,11 @@ class GenFHIR
         xw.WriteStartElement("status");
         if (connected == 1)
         {
-
             xw.WriteAttributeString("value", "active");
-
         }
         else
         {
-
             xw.WriteAttributeString("value", "inactive");
-
         }
         xw.WriteFullEndElement();
 
@@ -62,19 +57,15 @@ class GenFHIR
 
         xw.WriteEndDocument();
         xw.Close();
-
     }
 
     public static void Document(string type, string overwriteName = "")
     {
-
         // In case of forgetting to use StartSession(), a forced creation of the device profile.
         // Forgetting to use the function means device active status can be registered incorrectly.
         if (!(File.Exists(DataHandler.path + "VirZOOM-device-profile.xml")))
         {
-
             Device();
-
         }
 
         // Type handling done in DataHandler
@@ -92,15 +83,11 @@ class GenFHIR
 
         if (overwriteName == "")
         {
-
             fullFilePath += "VirZOOM-output-" + fileDateTime;
-
         }
         else
         {
-
             fullFilePath += overwriteName;
-
         }
 
         fullFilePath += ".xml";
@@ -110,6 +97,8 @@ class GenFHIR
 
         xw.WriteStartElement("Bundle", "http://hl7.org/fhir");
 
+
+        // FHIR identifying data
         xw.WriteStartElement("meta");
         xw.WriteStartElement("lastUpdated");
         xw.WriteAttributeString("value", dateTime);
@@ -198,7 +187,6 @@ class GenFHIR
 
         xw.WriteEndDocument();
         xw.Close();
-
     }
 
 }

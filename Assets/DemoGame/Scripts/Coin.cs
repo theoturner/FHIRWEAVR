@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿// Random generation of coins and player pick-up results.
+
+using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
@@ -13,16 +15,13 @@ public class Coin : MonoBehaviour
 
     void Start()
     {
-
         data = DataHandler.Instance;
         coinSound = GetComponentInParent<AudioSource>();
         location = transform.position;
-
     }
 
     void Update()
     {
-
         // Uncomment this for use with the bike
         //speedMultiplier = data.GetMetric("speed", "current") / 2;
         // Uncomment this for Unity Editor emulation
@@ -30,7 +29,6 @@ public class Coin : MonoBehaviour
 
         if (location.z <= -76.2)
         {
-
             // Need a new random seed any time we want to respawn the obstacle
             // Note the need to use ranom.Next(i, j + 1) for a random integer between i and j
             System.Random random = new System.Random();
@@ -45,7 +43,6 @@ public class Coin : MonoBehaviour
             location.z += 152.4f;
 
             collisionTrigger = false;
-
         }
 
         location.z += (float)(-0.01 * speedMultiplier);
@@ -55,28 +52,21 @@ public class Coin : MonoBehaviour
 
         // Update location after all calculations done
         transform.position = location;
-
     }
 
 
     void OnCollisionEnter(Collision collision)
     {
-
         // We don't use the bicycle hitbox as testing shows users perceive the bike is always directly under their view
         // regardless of leaning. Instead we use the camera and extend the hitbox to the ground and the width of the bike.
 
         if (collision.gameObject.name == "Camera" && collisionTrigger == false)
         {
-
             collisionTrigger = true;
             coinSound.Play();
 
             Player.score++;
-
         }
-
     }
 
-
 }
-

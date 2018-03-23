@@ -7,54 +7,41 @@ public class DateTimeFormats
 {
 
     // <CODE REVIEW> Anything wrong with making this static? User would have to instantiate DateTimeFormats otherwise.
-	public static string GetDT(string type)
-	{
 
+    public static string GetDT(string type)
+    {
         string dtFormatted;
         DateTime dt = DateTime.Now;
 
-        // Format for use in file names
-        if (type == "filename")
+        switch (type)
         {
+            // Format for use in file names
+            case "filename":
+                dtFormatted = dt.ToString("MM-dd-HH\"h\"mm\"m\"ss\"s\"");
+                break;
 
-            dtFormatted = dt.ToString("MM-dd-HH\"h\"mm\"m\"ss\"s\"");
+            // Date only
+            case "date":
+                dtFormatted = dt.ToString("yyyy-MM-dd");
+                break;
 
-        }
+            // Time only
+            case "time":
+                dtFormatted = dt.ToString("HH-mm-ssZzzz");
+                break;
 
-        // Date only
-        else if (type == "date")
-        {
+            // Fully-formed FHIR datatype dateTime, required in elements such as <date>
+            case "full":
+                dtFormatted = dt.ToString("yyyy-MM-ddTHH:mm:ssZzzz");
+                break;
 
-            dtFormatted = dt.ToString("yyyy-MM-dd");
-
-        }
-
-        // Time only
-        else if (type == "time")
-        {
-
-            dtFormatted = dt.ToString("HH-mm-ssZzzz");
-
-        }
-
-        // Fully-formed FHIR datatype dateTime, required in elements such as <date>
-        // If other prarameter inputted, defualts to this - slightly more efficient in a single else
-        else
-        {
-
-            if (type != "full")
-            {
-
+            default:
                 Debug.Log("That type does not exist. Defaulting to FHIR fatatype dateTime. Types are 'filename,' 'date,' 'time,' and 'full.'");
-
-            }
-
-            dtFormatted = dt.ToString("yyyy-MM-ddTHH:mm:ssZzzz");
-
+                dtFormatted = dt.ToString("yyyy-MM-ddTHH:mm:ssZzzz");
+                break;
         }
 
         return dtFormatted;
-
     }
 
 }
