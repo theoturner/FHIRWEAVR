@@ -5,53 +5,31 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
 
-    DataHandler data;
+    EnvironmentTranslator objectMover;
     AudioSource crashSound;
-    Vector3 location;
-    double speedMultiplier;
-    float randomScale;
     bool collisionTrigger;
 
     void Start()
     {
-        data = DataHandler.Instance;
+        objectMover = gameObject.AddComponent<EnvironmentTranslator>();
+        objectMover.Limit = 72.39;
+        objectMover.DoesScale = true;
+        objectMover.XMin = -13;
+        objectMover.XMax = 13;
+        objectMover.ScaleMin = 8;
+        objectMover.ScaleMax = 10;
+        objectMover.ZSpread = 1;
+
         crashSound = GetComponentInParent<AudioSource>();
-        location = transform.position;
     }
 
     void Update()
     {
-        // Uncomment this for use with the bike
-        //speedMultiplier = data.GetMetric("speed", "current") / 2;
-        // Uncomment this for Unity Editor emulation
-        speedMultiplier = 5;
-
-        if (location.z <= -72.39)
+        // Let user clear obstacle before making it collidable again - prevents multiple collision detections in a single 'real' collision
+        if (transform.position.z <= -5)
         {
-            // Need a new random seed any time we want to respawn the obstacle
-            // Note the need to use ranom.Next(i, j + 1) for a random integer between i and j
-            System.Random random = new System.Random();
-
-            // Random scale in acceptable range
-            randomScale = random.Next(8, 11) / 10f;
-            transform.localScale = new Vector3(randomScale, randomScale, randomScale);
-
-            // Random left/right position on track in acceptable range 
-            location.x = random.Next(-13, 14) / 10f;
-
-            // Random z-positon in acceptable range (define relative to the center of each track piece)
-            location.z += random.Next(-1, 2) / 10f;
-
-            // Move obstacles forward at end of conveyor belt
-            location.z += 152.4f;
-
             collisionTrigger = false;
         }
-
-        location.z += (float)(-0.01 * speedMultiplier);
-
-        // Update location after all calculations done
-        transform.position = location;
     }
 
 
@@ -65,6 +43,7 @@ public class Obstacle : MonoBehaviour
             collisionTrigger = true;
             crashSound.Play();
 
+            // Prevent negative score
             if (Player.score != 0)
             {
                 Player.score--;

@@ -1,4 +1,4 @@
-﻿// Example uses of FHIRWEAVR.
+﻿// Example uses of FHIRWEAVR (attached to the VZPlayer object).
 
 using UnityEngine;
 

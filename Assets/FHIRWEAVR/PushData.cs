@@ -61,7 +61,8 @@ public class PushData
 
         if (!(File.Exists(fullFilePath)))
         {
-            Debug.Log("File not found. Please check the filename or use ManualUpload(string fileToUpload, string filePath, string host) for files in non-default save locations.");
+            Debug.Log("File not found. Please check the filename or use ManualUpload(string " +
+                "fileToUpload, string filePath, string host) for files in non-default save locations.");
         }
 
         UploadViaClient(host, fullFilePath);

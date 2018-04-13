@@ -50,7 +50,8 @@ class GenFHIR
         xw.WriteFullEndElement();
 
         xw.WriteStartElement("safety");
-        xw.WriteString("Consult a medical professional before use. Use only on a level surface in a clear space and ensure that the bicycle is properly assembled. Do not exceed weight limit.");
+        xw.WriteString("Consult a medical professional before use. Use only on a level surface in a " +
+            "clear space and ensure that the bicycle is properly assembled. Do not exceed weight limit.");
         xw.WriteFullEndElement();
 
         xw.WriteEndElement();

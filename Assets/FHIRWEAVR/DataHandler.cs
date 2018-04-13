@@ -32,8 +32,8 @@ public class DataHandler : MonoBehaviour
 
     VZController controller;
     TextMesh FHIRHUD;
-    string spatialUIText;
-    double distance, speed, speedTotal, resistance, resistanceTotal, heartrate, heartrateTotal, rotation, rotationTotal, lean, leanTotal, incline, inclineTotal;
+    double distance, speed, speedTotal, resistance, resistanceTotal, heartrate,
+        heartrateTotal, rotation, rotationTotal, lean, leanTotal, incline, inclineTotal;
 
     // Initialization
     void Start()
@@ -66,17 +66,13 @@ public class DataHandler : MonoBehaviour
     // Get all data, current/session specified by parameter
     public double[] GetAllData(string type)
     {
-        double frames = Time.frameCount;
-        double[] current = { distance, speed, resistance, heartrate, rotation, lean, incline };
-        double[] session = { distance, speedTotal / frames, resistanceTotal / frames, heartrateTotal / frames, rotationTotal / frames, leanTotal / frames, inclineTotal / frames };
+        // We do the check here instead of re-using that of GetMetric to avoid 7 copies of the same error message
+        if (type == "current" || type == "session")
+        {
+            double[] metrics = { GetMetric("distance", type), GetMetric("speed", type), GetMetric("resistance", type),
+                GetMetric("heartrate", type), GetMetric("rotation", type), GetMetric("lean", type), GetMetric("incline", type) };
 
-        if (type == "current")
-        {
-            return current;
-        }
-        else if (type == "session")
-        {
-            return session;
+            return metrics;
         }
         else
         {
@@ -116,7 +112,8 @@ public class DataHandler : MonoBehaviour
                     return incline;
 
                 default:
-                    Debug.Log("That metric does not exist. Metrics are 'distance,' 'speed,' 'resistance,' 'heartrate,' 'rotation,' 'lean' and 'incline.'");
+                    Debug.Log("That metric does not exist. Metrics are 'distance,' 'speed,' " +
+                        "'resistance,' 'heartrate,' 'rotation,' 'lean' and 'incline.'");
                     return 0;
             }
         }
@@ -148,7 +145,8 @@ public class DataHandler : MonoBehaviour
                     return inclineTotal / frames;
 
                 default:
-                    Debug.Log("That metric does not exist. Metrics are 'distance,' 'speed,' 'resistance,' 'heartrate,' 'rotation,' 'lean' and 'incline.'");
+                    Debug.Log("That metric does not exist. Metrics are 'distance,' 'speed,' " +
+                        "'resistance,' 'heartrate,' 'rotation,' 'lean' and 'incline.'");
                     return 0;
             }
         }
@@ -163,24 +161,13 @@ public class DataHandler : MonoBehaviour
     // Optional parameter for hiding displayed data after a certain period of time
     public void DisplayAllData(string type, double duration = 0, string additionalText = "")
     {
-        string[] descriptors = { "Distance: ", "Speed: ", "Resistance: ", "Heartrate: ", "Rotation: ", "Lean: ", "Incline: " };
-        string[] units = { " km", " m/s", "", " bpm", " rad", " m", " m" };
-
-        // Type handling done in GetAllData
-        double[] allData = GetAllData(type);
-        int dataCount;
-
-        spatialUIText = type.ToUpper() + " READINGS\n";
-
-        for (dataCount = 0; dataCount < 7; dataCount++)
-        {
-            spatialUIText = spatialUIText + descriptors[dataCount] + String.Format("{0:0.0}", allData[dataCount]) + units[dataCount] + "\n";
-        }
-
-        FHIRHUD.text = spatialUIText + additionalText;
+        FHIRHUD.text = type.ToUpper() + " READINGS\n" + WriteMetric("distance", type) + WriteMetric("speed", type)
+            + WriteMetric("resistance", type) + WriteMetric("heartrate", type) + WriteMetric("rotation", type)
+            + WriteMetric("lean", type) + WriteMetric("incline", type) + additionalText;
 
         if (duration != 0)
         {
+            // Use a coroutine so we can yield in the waiting period
             StartCoroutine(HideAfterDuration(duration));
         }
     }
@@ -188,10 +175,35 @@ public class DataHandler : MonoBehaviour
     // Optional parameter for hiding displayed data after a certain period of time and for adding additional text to the HUD element
     public void DisplayMetric(string metric, string type, double duration = 0, string additionalText = "")
     {
+        FHIRHUD.text = type.ToUpper() + " READING\n" + WriteMetric(metric, type) + additionalText;
+
+        if (duration != 0)
+        {
+            StartCoroutine(HideAfterDuration(duration));
+        }
+    }
+
+    public void Hide()
+    {
+        FHIRHUD.text = "";
+    }
+
+    public void StartSession()
+    {
+        GenFHIR.Device();
+        Debug.Log("FHIRWEAVR session started.");
+    }
+
+    public void EndSession()
+    {
+        GenFHIR.Device(0);
+        Debug.Log("FHIRWEAVR session ended.");
+    }
+
+    string WriteMetric(string metric, string type)
+    {
         // Type handling done in GetMetric
         double metricData = GetMetric(metric, type);
-
-        spatialUIText = type.ToUpper() + " READING\n";
 
         string unit = "";
 
@@ -221,30 +233,8 @@ public class DataHandler : MonoBehaviour
             // Keep unit == "" (default) if metric is resistance or nonexistent metric entered
         }
 
-        FHIRHUD.text = spatialUIText + CultureInfo.CurrentCulture.TextInfo.ToTitleCase(metric) + ": " + String.Format("{0:0.0}", metricData) + unit + "\n" + additionalText;
-
-        if (duration != 0)
-        {
-            // Use a coroutine so we can yield in the waiting period
-            StartCoroutine(HideAfterDuration(duration));
-        }
-    }
-
-    public void Hide()
-    {
-        FHIRHUD.text = "";
-    }
-
-    public void StartSession()
-    {
-        GenFHIR.Device();
-        Debug.Log("FHIRWEAVR session started.");
-    }
-
-    public void EndSession()
-    {
-        GenFHIR.Device(0);
-        Debug.Log("FHIRWEAVR session ended.");
+        return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(metric) + ": " +
+            String.Format("{0:0.0}", metricData) + unit + "\n";
     }
 
     IEnumerator HideAfterDuration(double duration)
