@@ -1,4 +1,4 @@
-﻿// Outputs current date/time in multiple FHIR-compliant formats.
+﻿// Outputs current date and time in multiple FHIR-compliant formats.
 
 using System;
 using UnityEngine;

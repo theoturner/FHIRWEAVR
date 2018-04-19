@@ -1,4 +1,4 @@
-﻿// Sends data not yet on server to it via HTTP POST.
+﻿// Sends data not yet on server to it via HTTP POST (uses own thread).
 
 using System.IO;
 using System.Linq;
