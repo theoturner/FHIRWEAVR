@@ -9,8 +9,6 @@ using UnityEngine;
 public class PushData
 {
 
-    // <CODE REVIEW> Is there a better way to force threading of all methods in this class than to use Upload as wrapper for UploadCore?
-
     public void Upload(string fileToUpload, string host)
     {
         Thread uploadWorker = new Thread(() => UploadCore(fileToUpload, host));
