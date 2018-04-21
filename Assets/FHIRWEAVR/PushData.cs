@@ -1,5 +1,6 @@
 ﻿// Sends data not yet on server to it via HTTP POST (uses own thread).
 
+using System;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -38,7 +39,7 @@ public class PushData
         // File check function can also be used to check if a host exists
         if (!FileExistsAtURLCore(host))
         {
-            Debug.Log("Host is offline or does not support TLS 1.0.");
+            Debug.LogError("Host is offline or does not support TLS 1.0.");
         }
 
         // Note that HTTP allows additional / characters so don't need to check final character of host
@@ -59,8 +60,9 @@ public class PushData
 
         if (!(File.Exists(fullFilePath)))
         {
-            Debug.Log("File not found. Please check the filename or use ManualUpload(string " +
+            Debug.LogError("File not found. Please check the filename or use ManualUpload(string " +
                 "fileToUpload, string filePath, string host) for files in non-default save locations.");
+            throw new ArgumentException("File not found.", "fileToUpload");
         }
 
         UploadViaClient(host, fullFilePath);
@@ -80,7 +82,8 @@ public class PushData
 
         if (!(File.Exists(fullFilePath)))
         {
-            Debug.Log("File not found. Please check that the filename and path.");
+            Debug.LogError("File not found. Please check the filename and path.");
+            throw new ArgumentException("File not found.", "fileToUpload");
         }
 
         UploadViaClient(host, fullFilePath);
@@ -88,9 +91,8 @@ public class PushData
 
     void UploadViaClient(string host, string fileToUpload)
     {
-        WebClient FHIRClient = new WebClient();
-
-        using (FHIRClient)
+        // Wrap WebClient in using block so it is only accessible in the block scope
+        using (WebClient FHIRClient = new WebClient())
         {
             FHIRClient.UploadFile(host, fileToUpload);
         }

@@ -76,7 +76,7 @@ public class DataHandler : MonoBehaviour
         }
         else
         {
-            Debug.Log("That type does not exist. Types are 'current' and 'session.'");
+            Debug.LogError("That type does not exist. Types are 'current' and 'session.'");
 
             // Default to 0 for all metrics
             return new double[7];
@@ -112,7 +112,7 @@ public class DataHandler : MonoBehaviour
                     return incline;
 
                 default:
-                    Debug.Log("That metric does not exist. Metrics are 'distance,' 'speed,' " +
+                    Debug.LogError("That metric does not exist. Metrics are 'distance,' 'speed,' " +
                         "'resistance,' 'heartrate,' 'rotation,' 'lean' and 'incline.'");
                     return 0;
             }
@@ -145,14 +145,14 @@ public class DataHandler : MonoBehaviour
                     return inclineTotal / frames;
 
                 default:
-                    Debug.Log("That metric does not exist. Metrics are 'distance,' 'speed,' " +
+                    Debug.LogError("That metric does not exist. Metrics are 'distance,' 'speed,' " +
                         "'resistance,' 'heartrate,' 'rotation,' 'lean' and 'incline.'");
                     return 0;
             }
         }
         else
         {
-            Debug.Log("That type does not exist. Types are 'current' and 'session.'");
+            Debug.LogError("That type does not exist. Types are 'current' and 'session.'");
             return 0;
         }
     }
