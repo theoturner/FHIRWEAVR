@@ -8,7 +8,7 @@ using UnityEngine;
 public class DataHandler : MonoBehaviour
 {
 
-    // Create singleton
+    // Pseudo-singleton (adapted from Gamma, 1995)
     private static DataHandler local = null;
     public static DataHandler Instance
     {
