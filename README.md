@@ -1,6 +1,6 @@
 # FHIRWEAVR v1.3.1 
  
-### What’s new in this version
+#### What’s new in this version
 - FHIR 3.0.1 support
 
 - Updated visuals for the demo game
@@ -9,12 +9,15 @@
 
 - Minor bugfixes
 
-FHIRWEAVR is an API for the use of the Fast Healthcare Interoperability Resources (FHIR) specification with virtual reality. FHIRWEAVR is short for FHIR Workbox for Exercise and Active Virtual Reality. The API is written for the development of physiotherapy games using the VirZOOM exercise bicycle in the Unity engine.
+### What is FHIRWEAVR?
+
+FHIRWEAVR is an API for the use of the Fast Healthcare Interoperability Resources (FHIR) specification with VR. FHIRWEAVR is short for FHIR Workbox for Exercise and Active Virtual Reality. The API is written for the development of physiotherapy games using the VirZOOM exercise bicycle in the Unity engine.
+
+Full documentation can be found in the Assets folder.
 
 ### System Requirements 
- 
-Unity 2017.1+ and Visual Studio Version 2017+ on Windows.
+- Unity 2017.1+ and Visual Studio Version 2017+ on Windows.
 
-VirZOOM Beta Bicycle with any compatible head-mounted display.
+- VirZOOM Beta Bicycle with any compatible head-mounted display.
 
-If uploading data to a server, support for HTTP GET/POST and TLS 1.0.
+- If uploading data to a server, support for HTTP GET/POST and TLS 1.0.
