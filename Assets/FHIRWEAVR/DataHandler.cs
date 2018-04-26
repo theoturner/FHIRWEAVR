@@ -8,7 +8,7 @@ using UnityEngine;
 public class DataHandler : MonoBehaviour
 {
 
-    // Pseudo-singleton (adapted from Gamma, 1995)
+    // Adapted Gamma's Singleton (Gamma, 1995)
     private static DataHandler local = null;
     public static DataHandler Instance
     {
@@ -190,12 +190,15 @@ public class DataHandler : MonoBehaviour
 
     public void StartSession()
     {
+        // Creates device profile.
+        // If device profile already exists, changes FHIR active state to active and updates FHIR dateTime.
         GenFHIR.Device();
         Debug.Log("FHIRWEAVR session started.");
     }
 
     public void EndSession()
     {
+        // Changes FHIR active state to inactive and updates FHIR dateTime.
         GenFHIR.Device(0);
         Debug.Log("FHIRWEAVR session ended.");
     }

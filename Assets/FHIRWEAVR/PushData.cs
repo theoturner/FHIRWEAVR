@@ -75,7 +75,7 @@ public class PushData
         // Note that DOS uses / and \ interchangeably, even allowing both in a single path. Note \\ is an escape on \.
         if (lastPathChar != '/' || lastPathChar != '\\')
         {
-            filePath = filePath + '/';
+            filePath = filePath + Path.DirectorySeparatorChar;
         }
 
         string fullFilePath = filePath + fileToUpload;
