@@ -34,6 +34,7 @@ public class EnvironmentTranslator : MonoBehaviour
         speedMultiplier = 5.5;
 
         // Set base movement of objects depending on whether appearance is fish-eye
+        // These are in the peripheral vision and have realistic motion parallax rendering to mitigate virtual reality sickness
         proximityMultiplier = 0.01;
         if (doesFishEye)
         {
