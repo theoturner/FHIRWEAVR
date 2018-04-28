@@ -1,4 +1,4 @@
-﻿// Ocean animation for 'fish-eye' sense of speed.
+﻿// Ocean animation for realistic motion parallax - mitigates virtual reality sickness.
 
 using UnityEngine;
 
