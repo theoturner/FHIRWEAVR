@@ -289,6 +289,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Editor\NewEditModeTest.cs" />
+    <Compile Include="Assets\Editor\NewPlayModeTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\VirZOOMCore\Plugins\Android\AndroidManifest.xml" />
