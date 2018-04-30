@@ -25,7 +25,8 @@ public class Obstacle : MonoBehaviour
 
     void Update()
     {
-        // Let user clear obstacle before making it collidable again - prevents multiple collision detections in a single 'real' collision
+        // Let user clear obstacle before making it collidable again
+        // This prevents multiple collision detections in a single 'real' collision
         if (transform.position.z <= -5)
         {
             collisionTrigger = false;
@@ -35,8 +36,9 @@ public class Obstacle : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        // We don't use the bicycle hitbox as testing shows users perceive the bike is always directly under their view
-        // regardless of leaning. Instead we use the camera and extend the hitbox to the ground and the width of the bike.
+        // We don't use the bicycle hitbox as testing shows users perceive the bike is always
+        // directly under their view regardless of leaning. Instead we use the camera and extend
+        // the hitbox to the ground and the width of the bike.
 
         if (collision.gameObject.name == "Camera" && collisionTrigger == false)
         {

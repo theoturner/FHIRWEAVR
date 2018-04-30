@@ -7,7 +7,8 @@ public class ExampleUses : MonoBehaviour
 
     /*
 
-    // You must add this at the start of your MonoBehaviour class. Name the instances whatever you'd like.
+    // You must add this at the start of your MonoBehaviour class.
+    // Name the instances whatever you'd like.
     DataHandler myDataInstance;
     PushData myUploaderInstance = new PushData();
 

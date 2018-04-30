@@ -42,7 +42,7 @@ public class PushData
             Debug.LogError("Host is offline or does not support TLS 1.0.");
         }
 
-        // Note that HTTP allows additional / characters so don't need to check final character of host
+        // Note that HTTP allows additional / characters so don't need to check final character
         else if (!FileExistsAtURLCore(host + "/VirZOOM-device-profile.xml"))
         {
             UploadViaClient(host, DataHandler.path + "VirZOOM-device-profile.xml");
@@ -61,7 +61,7 @@ public class PushData
         if (!(File.Exists(fullFilePath)))
         {
             Debug.LogError("File not found. Please check the filename or use ManualUpload(string " +
-                "fileToUpload, string filePath, string host) for files in non-default save locations.");
+                "fileToUpload, string filePath, string host) for non-default save locations.");
             throw new ArgumentException("File not found.", "fileToUpload");
         }
 
@@ -72,7 +72,8 @@ public class PushData
     {
         char lastPathChar = filePath[filePath.Length - 1];
 
-        // Note that DOS uses / and \ interchangeably, even allowing both in a single path. Note \\ is an escape on \.
+        // Note that DOS uses / and \ interchangeably, even allowing both in a single path.
+        // Note \\ is an escape on \.
         if (lastPathChar != '/' || lastPathChar != '\\')
         {
             filePath = filePath + Path.DirectorySeparatorChar;

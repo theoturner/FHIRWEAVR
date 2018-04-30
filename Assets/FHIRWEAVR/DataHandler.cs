@@ -66,11 +66,12 @@ public class DataHandler : MonoBehaviour
     // Get all data, current/session specified by parameter
     public double[] GetAllData(string type)
     {
-        // We do the check here instead of re-using that of GetMetric to avoid 7 copies of the same error message
+        // We do the check here instead of re-using that of GetMetric to avoid 7 error messages
         if (type == "current" || type == "session")
         {
-            double[] metrics = { GetMetric("distance", type), GetMetric("speed", type), GetMetric("resistance", type),
-                GetMetric("heartrate", type), GetMetric("rotation", type), GetMetric("lean", type), GetMetric("incline", type) };
+            double[] metrics = { GetMetric("distance", type), GetMetric("speed", type),
+                GetMetric("resistance", type), GetMetric("heartrate", type),
+                GetMetric("rotation", type), GetMetric("lean", type), GetMetric("incline", type) };
 
             return metrics;
         }
@@ -161,9 +162,10 @@ public class DataHandler : MonoBehaviour
     // Optional parameter for hiding displayed data after a certain period of time
     public void DisplayAllData(string type, double duration = 0, string additionalText = "")
     {
-        FHIRHUD.text = type.ToUpper() + " READINGS\n" + WriteMetric("distance", type) + WriteMetric("speed", type)
-            + WriteMetric("resistance", type) + WriteMetric("heartrate", type) + WriteMetric("rotation", type)
-            + WriteMetric("lean", type) + WriteMetric("incline", type) + additionalText;
+        FHIRHUD.text = type.ToUpper() + " READINGS\n" + WriteMetric("distance", type) + 
+            WriteMetric("speed", type) + WriteMetric("resistance", type) +
+            WriteMetric("heartrate", type) + WriteMetric("rotation", type) +
+            WriteMetric("lean", type) + WriteMetric("incline", type) + additionalText;
 
         if (duration != 0)
         {
@@ -172,8 +174,10 @@ public class DataHandler : MonoBehaviour
         }
     }
 
-    // Optional parameter for hiding displayed data after a certain period of time and for adding additional text to the HUD element
-    public void DisplayMetric(string metric, string type, double duration = 0, string additionalText = "")
+    // Optional parameter for hiding displayed data after a certain period of time
+    // and for adding additional text to the HUD element
+    public void DisplayMetric(string metric, string type, double duration = 0,
+        string additionalText = "")
     {
         FHIRHUD.text = type.ToUpper() + " READING\n" + WriteMetric(metric, type) + additionalText;
 
@@ -191,7 +195,7 @@ public class DataHandler : MonoBehaviour
     public void StartSession()
     {
         // Creates device profile.
-        // If device profile already exists, changes FHIR active state to active and updates FHIR dateTime.
+        // If device profile already exists, changes FHIR state to active and updates dateTime.
         GenFHIR.Device();
         Debug.Log("FHIRWEAVR session started.");
     }

@@ -35,8 +35,7 @@ public class Coin : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        // We don't use the bicycle hitbox as testing shows users perceive the bike is always directly under their view
-        // regardless of leaning. Instead we use the camera and extend the hitbox to the ground and the width of the bike.
+        // See Obstacle.cs for hitbox information
 
         if (collision.gameObject.name == "Camera" && coinTrigger == false)
         {

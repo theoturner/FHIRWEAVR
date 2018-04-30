@@ -18,8 +18,7 @@ public class CameraEffects : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        // We don't use the bicycle hitbox as testing shows users perceive the bike is always directly under their view
-        // regardless of leaning. Instead we use the camera and extend the hitbox to the ground and the width of the bike.
+        // See Obstacle.cs for hitbox information.
 
         if (collision.gameObject.tag == "Obstacle" && collisionTrigger == false)
         {
@@ -61,7 +60,7 @@ public class CameraEffects : MonoBehaviour
             yield return new WaitForSeconds(0.001f);
         }
 
-        // Frames are not infinite per second, so sometimes we don't return exactly to 0 - assign manually
+        // Frames are not infinite per second, so sometimes we don't return exactly to 0
         effects.alpha = 0;
     }
 

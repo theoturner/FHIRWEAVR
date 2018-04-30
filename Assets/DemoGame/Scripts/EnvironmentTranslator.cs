@@ -1,4 +1,5 @@
-﻿// Common script which transforms objects for the game's random generation, added programatically as a component for each game object type.
+﻿// Common script which transforms objects for the game's procedural generation, added
+// programatically as a component for each game object type.
 
 using UnityEngine;
 
@@ -29,12 +30,14 @@ public class EnvironmentTranslator : MonoBehaviour
         data = DataHandler.Instance;
         location = transform.position;
 
-        // Uncomment this for Unity Editor emulation, comment speedMultiplier in Update()
-        // Average speed in testing was found to be 3.3m/s, assuming a constant 60fps (not demanding) this means a speedMultiplier of 5.5
+        // Uncomment this for Unity Editor emulation, comment speedMultiplier in Update().
+        // Average speed in testing was found to be 3.3m/s, assuming a constant 60fps (not demanding).
+        // This means a speedMultiplier of 5.5.
         speedMultiplier = 5.5;
 
-        // Set base movement of objects depending on whether appearance is fish-eye
-        // These are in the peripheral vision and have realistic motion parallax rendering to mitigate virtual reality sickness
+        // Set base movement of objects depending on whether appearance is fish-eye.
+        // These are in the peripheral vision and have realistic motion parallax rendering to
+        // mitigate virtual reality sickness
         proximityMultiplier = 0.01;
         if (doesFishEye)
         {
@@ -44,7 +47,7 @@ public class EnvironmentTranslator : MonoBehaviour
 
     void Update()
     {
-        // Uncomment this for use with the bike, comment speedMultiplier in Start()
+        // Uncomment this for use with the bike, comment speedMultiplier in Start().
         //speedMultiplier = data.GetMetric("speed", "current");
 
         if (location.z <= -limit)

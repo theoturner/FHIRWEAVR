@@ -7,7 +7,7 @@ using System.Xml;
 class GenFHIR
 {
 
-    // Optional parameter used for closing connections after sessions to ensure VirZOOM is registered as inactive
+    // Optional parameter used for closing connections to ensure VirZOOM is registered as inactive
     public static void Device(int connected = 1)
     {
         string dateTime = DateTimeFormats.GetDT("full");
@@ -125,8 +125,9 @@ class GenFHIR
 
         xw.WriteStartElement("safety");
         xw.WriteStartElement("text");
-        xw.WriteAttributeString("value", "Consult a medical professional before use. Use only on a level surface " +
-            "in a clear space and ensure that the bicycle is properly assembled. Do not exceed weight limit.");
+        xw.WriteAttributeString("value", "Consult a medical professional before use. Use only on "+
+            "a level surface in a clear space and ensure that the bicycle is properly assembled. "+
+            "Do not exceed weight limit.");
         xw.WriteEndElement();
         xw.WriteFullEndElement();
 
@@ -146,7 +147,7 @@ class GenFHIR
     {
         // In case of forgetting to use StartSession(), a forced creation of the device profile.
         // Forgetting to use the function means device active status can be registered incorrectly.
-        // Checked every time a Document is created for the sake of Android 6's handling of the persistent data path.
+        // Checked every time a Document is created because of Android 6's handling of the PDP.
         if (!(File.Exists(DataHandler.path + "VirZOOM-device-profile.xml")))
         {
             Device();
@@ -156,7 +157,8 @@ class GenFHIR
         double[] output = DataHandler.Instance.GetAllData(type);
         int dataCount;
 
-        string[] identifiers = { "distance", "speed", "resistance", "heartrate", "rotation", "lean", "incline" };
+        string[] identifiers = { "distance", "speed", "resistance", "heartrate", "rotation",
+            "lean", "incline" };
         string[] unit = { " km", " m/s", "", " bpm", " rad", " m", " m" };
 
         // Get date/time immediately after getting data
@@ -257,7 +259,8 @@ class GenFHIR
         for (dataCount = 0; dataCount < 7; dataCount++)
         {
             xw.WriteStartElement(identifiers[dataCount]);
-            xw.WriteAttributeString("value", String.Format("{0:0.0}", output[dataCount]) + unit[dataCount]);
+            xw.WriteAttributeString("value", String.Format("{0:0.0}", output[dataCount]) +
+                unit[dataCount]);
             xw.WriteFullEndElement();
         }
         xw.WriteEndElement();

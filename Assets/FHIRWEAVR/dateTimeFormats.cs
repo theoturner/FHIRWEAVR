@@ -34,7 +34,8 @@ public class DateTimeFormats
                 break;
 
             default:
-                Debug.LogError("That type does not exist. Defaulting to FHIR datatype dateTime. Types are 'filename,' 'date,' 'time,' and 'full.'");
+                Debug.LogError("That type does not exist. Defaulting to FHIR datatype dateTime. " +
+                    "Types are 'filename,' 'date,' 'time,' and 'full.'");
                 dtFormatted = dt.ToString("yyyy-MM-ddTHH:mm:ssZzzz");
                 break;
         }
