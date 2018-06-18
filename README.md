@@ -11,7 +11,7 @@
 
 ### What is FHIRWEAVR?
 
-FHIRWEAVR is an API for the use of the Fast Healthcare Interoperability Resources (FHIR) specification with VR. FHIRWEAVR is short for FHIR Workbox for Exercise and Active Virtual Reality. The API is written for the development of physiotherapy games using the VirZOOM exercise bicycle in the Unity engine.
+FHIRWEAVR is an SDK for the use of the Fast Healthcare Interoperability Resources (FHIR) specification with VR. FHIRWEAVR is short for FHIR Workbox for Exercise and Active Virtual Reality. The API is written for the development of physiotherapy games using the VirZOOM exercise bicycle in the Unity engine.
 
 Full documentation can be found in the Assets folder.
 
@@ -21,3 +21,10 @@ Full documentation can be found in the Assets folder.
 - VirZOOM Beta Bicycle with any compatible head-mounted display.
 
 - If uploading data to a server, support for HTTP GET/POST and TLS 1.0.
+
+### Author
+FHIRWEAVR is written by Theo Turner
+
+linkedin.com/in/theoturner
+
+UCL contacts - supervisor: Dr. Dean Mohamedally, client: Alex Matei.
