@@ -22,7 +22,9 @@ Full documentation can be found in the Assets folder.
 
 - If uploading data to a server, support for HTTP GET/POST and TLS 1.0.
 
-### Author
+### Attribution
 FHIRWEAVR is written by [Theo Turner](https://www.linkedin.com/in/theoturner/).
+
+For an overview of the development process and how FHIRWEAVR works, see [the full report](Report.pdf).
 
 UCL contacts - supervisor: Dr. Dean Mohamedally, client: Alex Matei.
