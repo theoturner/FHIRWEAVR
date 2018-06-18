@@ -1,6 +1,9 @@
 # FHIRWEAVR v1.3.1 
- 
-#### What’s new in this version
+### Featured at TechXLR8 2018 and VRWorld 2018
+
+<br>
+
+### What’s new in this version
 - FHIR 3.0.1 support
 
 - Updated visuals for the demo game
