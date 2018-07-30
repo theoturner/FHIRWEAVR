@@ -1,6 +1,6 @@
 # FHIRWEAVR v1.3.1 
 ### Featured at TechXLR8 2018 and VRWorld 2018
-
+### Update: FHIRWEAVR has been added to NHS Digital's Open Source repo.
 <br>
 
 ### What’s new in this version
