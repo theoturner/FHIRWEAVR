@@ -30,4 +30,4 @@ FHIRWEAVR is written by [Theo Turner](https://www.linkedin.com/in/theoturner/).
 
 For an overview of the development process and how FHIRWEAVR works, see [the full report](Report.pdf).
 
-UCL contacts - supervisor: Dr. Dean Mohamedally, client: Alex Matei.
+Project supervisor: Dr. Dean Mohamedally, client: Alex Matei.
